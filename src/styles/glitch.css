@@ -1,0 +1,157 @@
+/* CASE 404 — glitch atmosphere layer & threat badge */
+
+#glitchLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.glitch-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 4, 12, 0.55);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.glitch-overlay.show { opacity: 1; }
+.glitch-line {
+  font-family: var(--mono);
+  font-size: clamp(14px, 4vw, 22px);
+  letter-spacing: 0.28em;
+  color: var(--red);
+  text-shadow:
+    -2px 0 #4da3ff,
+    2px 0 #ff3b4e,
+    0 0 24px rgba(255, 59, 78, 0.55);
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 59, 78, 0.45);
+  background: rgba(10, 8, 16, 0.85);
+  animation: glitchText 0.35s steps(2) infinite;
+}
+@keyframes glitchText {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(3px, 0); }
+  100% { transform: translate(0); }
+}
+
+.glitch-tear {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 59, 78, 0.15) 20%,
+    rgba(77, 163, 255, 0.12) 50%,
+    rgba(255, 59, 78, 0.15) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(255, 59, 78, 0.25);
+  transform: translateX(var(--shift, 0));
+  animation: tearFlash 0.25s ease both;
+}
+@keyframes tearFlash {
+  from { opacity: 0; }
+  30% { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.glitch-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    rgba(255, 59, 78, 0.04) 2px 3px
+  );
+  animation: scanPulse 0.45s ease both;
+}
+@keyframes scanPulse {
+  from { opacity: 0; }
+  40% { opacity: 1; }
+  to { opacity: 0; }
+}
+
+body.glitch-shake {
+  animation: bodyShake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+}
+@keyframes bodyShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+/* Threat badge on topbar */
+.tb-threat {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+  min-width: 28px;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.25s, background 0.2s, color 0.2s;
+}
+.tb-threat.on {
+  opacity: 1;
+  background: rgba(255, 59, 78, 0.12);
+  border: 1px solid rgba(255, 59, 78, 0.35);
+  color: var(--red);
+}
+.tb-threat.high {
+  background: rgba(255, 59, 78, 0.22);
+  border-color: rgba(255, 59, 78, 0.55);
+  animation: threatPulse 2.4s ease infinite;
+}
+.tb-threat.critical {
+  background: rgba(255, 59, 78, 0.35);
+  border-color: var(--red);
+  box-shadow: 0 0 12px rgba(255, 59, 78, 0.4);
+  animation: threatPulse 1.2s ease infinite;
+}
+@keyframes threatPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+.tb-t-num { font-weight: 800; }
+
+/* Dossier stats grid */
+.dossier-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.ds-cell {
+  background: rgba(14, 22, 38, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+}
+.ds-cell b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+.ds-cell span {
+  display: block;
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: 0.14em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
