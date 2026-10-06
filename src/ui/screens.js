@@ -10,7 +10,7 @@ import { EvidenceUI } from '../systems/evidence.js';
 import { BoardUI } from '../systems/board.js';
 import { ENDINGS, Endings } from '../systems/endings.js';
 import { THREAT_LABELS } from '../engine/state.js';
-import { t, setLanguage, languageOptions } from '../engine/i18n.js';
+import { t as tr, setLanguage, languageOptions } from '../engine/i18n.js';
 
 const overlay = () => document.getElementById('overlay');
 
@@ -25,8 +25,8 @@ export function renderBoot(stage, onDone) {
         <div class="boot-case">CASE</div>
         <div class="boot-404 glitch" data-text="404">404</div>
       </div>
-      <div class="boot-sub">${t('casesOneTruth')}</div>
-      <div class="boot-tap">${t('tapBegin')}</div>
+      <div class="boot-sub">${tr('casesOneTruth')}</div>
+      <div class="boot-tap">${tr('tapBegin')}</div>
       <div class="boot-foot">an original investigation · v0.2.0</div>
     </div>`;
   const s = document.getElementById('bootScreen');
@@ -49,12 +49,12 @@ export function renderMenu(stage) {
         <div class="menu-tag">23 CASES. ONE TRUTH.</div>
       </div>
       <div class="menu-btns">
-        <button class="menu-btn" data-nav="new"><b>${t('newGame')}</b><span>${t('newGameSub','The deeper you dig, the more it digs back.')}</span></button>
-        <button class="menu-btn" data-nav="resume"><b>${t('continue')}</b><span id="menuContinueInfo"></span></button>
-        <button class="menu-btn" data-nav="caseSelect"><b>${t('caseSelect')}</b><span>${t('caseSelectSub')}</span></button>
-        <button class="menu-btn" data-nav="archive"><b>${t('characters')}</b><span>${t('charactersSub','People you have met. People you have hurt.')}</span></button>
-        <button class="menu-btn" data-nav="story"><b>${t('dossier')}</b><span>${t('dossierSub','Threats, decisions and connections so far.')}</span></button>
-        <button class="menu-btn" data-nav="settings"><b>${t('settings')}</b><span></span></button>
+        <button class="menu-btn" data-nav="new"><b>${tr('newGame')}</b><span>${tr('newGameSub','The deeper you dig, the more it digs back.')}</span></button>
+        <button class="menu-btn" data-nav="resume"><b>${tr('continue')}</b><span id="menuContinueInfo"></span></button>
+        <button class="menu-btn" data-nav="caseSelect"><b>${tr('caseSelect')}</b><span>${tr('caseSelectSub')}</span></button>
+        <button class="menu-btn" data-nav="archive"><b>${tr('characters')}</b><span>${tr('charactersSub','People you have met. People you have hurt.')}</span></button>
+        <button class="menu-btn" data-nav="story"><b>${tr('dossier')}</b><span>${tr('dossierSub','Threats, decisions and connections so far.')}</span></button>
+        <button class="menu-btn" data-nav="settings"><b>${tr('settings')}</b><span></span></button>
       </div>
       <div class="menu-foot">CASE 404 · original story · all assets generated at runtime</div>
     </div>`;
@@ -63,7 +63,7 @@ export function renderMenu(stage) {
   if (latest) {
     const cm = G.manifest?.cases.find(c => c.id === latest.state?.progress?.currentCase);
     info.textContent = cm ? `${cm.code} — ${cm.title}` : 'Resume investigation';
-  } else info.textContent = '${t('noRecord')}';
+  } else info.textContent = tr('noRecord');
 
   stage.querySelectorAll('.menu-btn').forEach(b => {
     b.onclick = () => { Audio.sfx('select'); bus.emit('nav', b.dataset.nav); };
@@ -79,11 +79,11 @@ export function renderCaseBrief(stage, data, onStart) {
       <div class="brief-code">${data.code}</div>
       <div class="brief-title">${data.title}</div>
       <div class="brief-file panel">
-        <div class="brief-file-head">${t('caseFile')}</div>
+        <div class="brief-file-head">${tr('caseFile')}</div>
         <p>${data.brief}</p>
-        ${data.objectives ? `<div class="brief-obj"><b>${t('primaryObjectives')}</b>${data.objectives.map(o => `<div>☐ ${o}</div>`).join('')}</div>` : ''}
+        ${data.objectives ? `<div class="brief-obj"><b>${tr('primaryObjectives')}</b>${data.objectives.map(o => `<div>☐ ${o}</div>`).join('')}</div>` : ''}
       </div>
-      <button class="btn btn-primary brief-start">${t('openFile')}</button>
+      <button class="btn btn-primary brief-start">${tr('openFile')}</button>
     </div>`;
   stage.querySelector('.brief-start').onclick = () => { Audio.sfx('stamp'); onStart(); };
 }
@@ -92,7 +92,7 @@ export function renderCaseBrief(stage, data, onStart) {
 
 export function renderCaseSelect(stage) {
   stage.innerHTML = `<div class="screen select-screen">
-    <div class="ov-head"><button class="ov-close back">‹</button><h3>${t('caseSelect')}</h3><span></span></div>
+    <div class="ov-head"><button class="ov-close back">‹</button><h3>${tr('caseSelect')}</h3><span></span></div>
     <div class="case-grid"></div></div>`;
   stage.querySelector('.back').onclick = () => bus.emit('nav', 'menu');
   const grid = stage.querySelector('.case-grid');
@@ -109,7 +109,7 @@ export function renderCaseSelect(stage) {
         <div class="cc-code">${c.code}</div>
         <div class="cc-title">${c.title}</div>
         <div class="cc-brief">${c.brief || ''}</div>
-        <div class="cc-status dev">${t('inDevelopment')}</div>`;
+        <div class="cc-status dev">${tr('inDevelopment')}</div>`;
       card.onclick = () => {
         Audio.sfx('fail');
         HUD.toast('This file is sealed. New cases are added as data — see docs/ADDING_CASES.md', 'warn');
@@ -119,13 +119,13 @@ export function renderCaseSelect(stage) {
         <div class="cc-code">${c.code}</div>
         <div class="cc-title">████████ ██</div>
         <div class="cc-brief">CLASSIFIED — complete the previous case.</div>
-        <div class="cc-status locked">${t('locked')}</div>`;
+        <div class="cc-status locked">${tr('locked')}</div>`;
     } else {
       card.innerHTML = `
         <div class="cc-code">${c.code}</div>
         <div class="cc-title">${c.title}</div>
         <div class="cc-brief">${c.brief || ''}</div>
-        <div class="cc-status ${completed ? 'done' : 'open'}">${completed ? '' + t('closed') + ' — ' + String(completed).toUpperCase() : (c.id === unlocked ? '${t('current')}' : '${t('replay')}')}</div>`;
+        <div class="cc-status ${completed ? 'done' : 'open'}">${completed ? '' + tr('closed') + ' — ' + String(completed).toUpperCase() : (c.id === unlocked ? tr('current') : tr('replay'))}</div>`;
       card.onclick = () => { Audio.sfx('select'); bus.emit('nav', 'startCase:' + c.id); };
     }
     grid.appendChild(card);
@@ -136,7 +136,7 @@ export function renderCaseSelect(stage) {
 
 export function renderArchive(stage) {
   stage.innerHTML = `<div class="screen archive-screen">
-    <div class="ov-head"><button class="ov-close back">‹</button><h3>${t('charactersArchive')}</h3><span></span></div>
+    <div class="ov-head"><button class="ov-close back">‹</button><h3>${tr('charactersArchive')}</h3><span></span></div>
     <div class="archive-grid"></div></div>`;
   stage.querySelector('.back').onclick = () => bus.emit('nav', 'menu');
   const grid = stage.querySelector('.archive-grid');
@@ -147,14 +147,14 @@ export function renderArchive(stage) {
     const card = elx('div', 'arch-card panel' + (met ? '' : ' unknown'));
     card.innerHTML = `
       <div class="arch-top">${avatarEl(met ? c.name : '?????', 'big')}<div>
-        <b>${met ? c.name : '${t('unknown')}'}</b>
+        <b>${met ? c.name : tr('unknown')}</b>
         <span>${met ? (c.role || '') : 'no record'}</span>
       </div></div>
-      <p>${met ? (c.bio || '') : '${t('noRecordPerson')}'}</p>
+      <p>${met ? (c.bio || '') : tr('noRecordPerson')}</p>
       ${met ? `<div class="arch-rel">
         ${['trust', 'fear', 'loyalty', 'suspicion'].map(s => `<div class="arch-relrow"><span>${s}</span><div class="bar"><i style="width:${Math.max(0, Math.min(100, r[s] ?? 0))}%"></i></div></div>`).join('')}
       </div>` : ''}
-      ${met && r.memory?.length ? `<div class="arch-memory"><b>${t('remembers')}</b>${r.memory.map(m => `<div>· ${m}</div>`).join('')}</div>` : ''}
+      ${met && r.memory?.length ? `<div class="arch-memory"><b>${tr('remembers')}</b>${r.memory.map(m => `<div>· ${m}</div>`).join('')}</div>` : ''}
     `;
     grid.appendChild(card);
   }
@@ -164,36 +164,36 @@ export function renderArchive(stage) {
 
 export function renderStoryArchive(stage) {
   stage.innerHTML = `<div class="screen dossier-screen">
-    <div class="ov-head"><button class="ov-close back">‹</button><h3>${t('dossierTitle')}</h3><span></span></div>
+    <div class="ov-head"><button class="ov-close back">‹</button><h3>${tr('dossierTitle')}</h3><span></span></div>
     <div class="dossier-body"></div></div>`;
   stage.querySelector('.back').onclick = () => bus.emit('nav', 'menu');
   const body = stage.querySelector('.dossier-body');
 
   // threat log
   const t = elx('div', 'panel pad dossier-sec');
-  t.innerHTML = `<h4>${t('threatLevel')}</h4>
+  t.innerHTML = `<h4>${tr('threatLevel')}</h4>
     <div class="tl-big">${G.s.threat.level} / 7 — ${THREAT_LABELS[G.s.threat.level] || ''}</div>`;
   for (const ev of G.s.threat.events) t.appendChild(elx('div', 'dossier-row', `LEVEL ${ev.level} — ${ev.label}`));
   body.appendChild(t);
 
   // decisions
   const d = elx('div', 'panel pad dossier-sec');
-  d.innerHTML = `<h4>${t('decisionRecord')}</h4>`;
-  if (!G.s.progress.choices.length) d.appendChild(elx('div', 'dossier-row', '${t('noDecisions')}'));
+  d.innerHTML = `<h4>${tr('decisionRecord')}</h4>`;
+  if (!G.s.progress.choices.length) d.appendChild(elx('div', 'dossier-row', tr('noDecisions')));
   for (const c of G.s.progress.choices) d.appendChild(elx('div', 'dossier-row', `${c.summary || c.name}`));
   body.appendChild(d);
 
   // connections
   const b = elx('div', 'panel pad dossier-sec');
-  b.innerHTML = `<h4>${t('connections')}</h4><p>${G.s.board.links.length} ${t('linksMapped')}</p>`;
-  const openB = elx('button', 'btn btn-ghost', '${t('openBoard')}');
+  b.innerHTML = `<h4>${tr('connections')}</h4><p>${G.s.board.links.length} ${tr('linksMapped')}</p>`;
+  const openB = elx('button', 'btn btn-ghost', tr('openBoard'));
   openB.onclick = () => bus.emit('open', 'board');
   b.appendChild(openB);
   body.appendChild(b);
 
   // endings seen
   const e = elx('div', 'panel pad dossier-sec');
-  e.innerHTML = `<h4>${t('endings')}</h4>`;
+  e.innerHTML = `<h4>${tr('endings')}</h4>`;
   const seen = G.s.progress.seenEndings;
   for (const [id, def] of Object.entries(ENDINGS)) {
     e.appendChild(elx('div', 'dossier-row', `${seen.includes(id) ? def.title : 'ENDING ' + id + ' — ████████'}`));
@@ -209,13 +209,13 @@ export function renderPause() {
   root.innerHTML = '';
   const wrap = elx('div', 'overlay-panel center pause-panel');
   wrap.innerHTML = `
-    <h3>${t('paused')}</h3>
-    <button class="btn btn-primary" data-a="resume">${t('resume')}</button>
-    <button class="btn" data-a="save">${t('saveGame')}</button>
-    <button class="btn" data-a="load">${t('loadGame')}</button>
-    <button class="btn" data-a="settings">${t('settings')}</button>
-    <button class="btn" data-a="select">${t('caseSelect')}</button>
-    <button class="btn btn-ghost" data-a="menu">${t('mainMenu')}</button>`;
+    <h3>${tr('paused')}</h3>
+    <button class="btn btn-primary" data-a="resume">${tr('resume')}</button>
+    <button class="btn" data-a="save">${tr('saveGame')}</button>
+    <button class="btn" data-a="load">${tr('loadGame')}</button>
+    <button class="btn" data-a="settings">${tr('settings')}</button>
+    <button class="btn" data-a="select">${tr('caseSelect')}</button>
+    <button class="btn btn-ghost" data-a="menu">${tr('mainMenu')}</button>`;
   wrap.querySelectorAll('button').forEach(b => {
     b.onclick = () => {
       Audio.sfx('click');
@@ -236,16 +236,16 @@ export function renderSettings() {
   const wrap = elx('div', 'overlay-panel center settings-panel');
   const s = G.s.settings;
   wrap.innerHTML = `
-    <h3>${t('settings')}</h3>
-    <div class="set-row"><span>${t('music')}</span><input type="range" id="setMusic" min="0" max="1" step="0.05" value="${s.music}"></div>
-    <div class="set-row"><span>${t('soundFx')}</span><input type="range" id="setSfx" min="0" max="1" step="0.05" value="${s.sfx}"></div>
-    <div class="set-row"><span>${t('textSpeed')}</span>
+    <h3>${tr('settings')}</h3>
+    <div class="set-row"><span>${tr('music')}</span><input type="range" id="setMusic" min="0" max="1" step="0.05" value="${s.music}"></div>
+    <div class="set-row"><span>${tr('soundFx')}</span><input type="range" id="setSfx" min="0" max="1" step="0.05" value="${s.sfx}"></div>
+    <div class="set-row"><span>${tr('textSpeed')}</span>
       <div class="seg" id="setSpeed">
-        ${['slow', 'normal', 'fast', 'instant'].map(v => `<button data-v="${v}" class="${s.textSpeed === v ? 'on' : ''}">${t(v, v.toUpperCase())}</button>`).join('')}
+        ${['slow', 'normal', 'fast', 'instant'].map(v => `<button data-v="${v}" class="${s.textSpeed === v ? 'on' : ''}">${tr(v, v.toUpperCase())}</button>`).join('')}
       </div></div>
-    <div class="set-row"><span>${t('language')}</span><select id="setLanguage">${languageOptions().map(o => `<option value="${o.code}" ${o.code === s.language ? 'selected' : ''}>${o.label}</option>`).join('')}</select></div>
-    <button class="btn btn-ghost" id="setClose">${t('close')}</button>
-    <button class="btn btn-danger" id="setWipe">${t('erase')}</button>`;
+    <div class="set-row"><span>${tr('language')}</span><select id="setLanguage">${languageOptions().map(o => `<option value="${o.code}" ${o.code === s.language ? 'selected' : ''}>${o.label}</option>`).join('')}</select></div>
+    <button class="btn btn-ghost" id="setClose">${tr('close')}</button>
+    <button class="btn btn-danger" id="setWipe">${tr('erase')}</button>`;
   root.appendChild(wrap);
   const persist = () => { Store.metaSet({ booted: true, settings: G.s.settings }); Store.auto(); };
   wrap.querySelector('#setMusic').oninput = e => { G.s.settings.music = +e.target.value; Audio.setVolumes(s.music, s.sfx); persist(); };
@@ -258,14 +258,14 @@ export function renderSettings() {
     };
   });
   wrap.querySelector('#setClose').onclick = () => { root.innerHTML = ''; };
-  wrap.querySelector('#setLanguage').onchange = e => { setLanguage(e.target.value); persist(); bus.emit('nav', 'settings'); HUD.toast(t('settingsSaved','Language changed.'), 'good'); };
+  wrap.querySelector('#setLanguage').onchange = e => { setLanguage(e.target.value); persist(); bus.emit('nav', 'settings'); HUD.toast(tr('settingsSaved','Language changed.'), 'good'); };
   wrap.querySelector('#setWipe').onclick = () => {
-    if (confirm(t('eraseConfirm','Erase ALL progress, saves and records? This cannot be undone.'))) {
+    if (confirm(tr('eraseConfirm','Erase ALL progress, saves and records? This cannot be undone.'))) {
       Store.wipeAll();
       G.s = freshProfile();
       root.innerHTML = '';
       bus.emit('nav', 'menu');
-      HUD.toast(t('recordsErased','All records erased.'), 'warn');
+      HUD.toast(tr('recordsErased','All records erased.'), 'warn');
     }
   };
 }
