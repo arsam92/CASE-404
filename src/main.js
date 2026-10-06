@@ -4,6 +4,7 @@ import { Engine } from './engine/engine.js';
 import { bus } from './engine/bus.js';
 import { Audio } from './engine/audio.js';
 import { Store } from './engine/save.js';
+import './systems/glitch.js'; // starts ambient glitch loop on audio unlock
 
 function unlock() {
   Audio.init();
