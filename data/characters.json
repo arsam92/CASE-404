@@ -111,5 +111,23 @@
     "role": "Insurance Investigator",
     "color": "#c77dff",
     "bio": "Helen Voss's younger sister. Investigates fires for a living. Started that way. Will not stop until the 2004 archive fire has a name attached."
+  },
+  "ruth": {
+    "name": "Ruth Kline",
+    "role": "Night Dispatch, East Docks Courier Hub",
+    "color": "#8fa0bd",
+    "bio": "Runs the night board for forty couriers. Hates blank client fields. Remembers voices better than faces. Has learned which names pay and which names get people hurt."
+  },
+  "leo": {
+    "name": "Leo Vance",
+    "role": "Fixer — East Docks",
+    "color": "#b06b6b",
+    "bio": "Small problems, cash only, no paperwork. Orbits Northbridge without working for them. Keeps receipts out of habit. Survival is his only loyalty until someone gives him a better reason."
+  },
+  "danny": {
+    "name": "Danny Ortiz",
+    "role": "Courier, East Docks",
+    "color": "#5a6a8a",
+    "bio": "Reliable, underpaid, follows route sheets like scripture. Survived CASE 002 with a concussion and a story he can barely finish."
   }
 }
