@@ -22,7 +22,7 @@ export function freshProfile() {
     createdAt: Date.now(),
     lastPlayed: Date.now(),
     player: { name: 'James Carter' },
-    settings: { music: 0.6, sfx: 0.8, textSpeed: 'normal' }, // slow|normal|fast|instant
+    settings: { music: 0.6, sfx: 0.8, textSpeed: 'normal', language: 'en' }, // slow|normal|fast|instant
     progress: {
       unlocked: 0,              // highest playable case index
       currentCase: 0,           // case currently in progress
