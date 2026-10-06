@@ -10,7 +10,7 @@ const www = join(root, 'www');
 rmSync(www, { recursive: true, force: true });
 mkdirSync(www, { recursive: true });
 
-const items = ['index.html', 'src', 'data', 'public', 'assets'];
+const items = ['index.html', 'src', 'data', 'public', 'assets', 'i18n'];
 for (const it of items) {
   const from = join(root, it);
   if (existsSync(from)) cpSync(from, join(www, it), { recursive: true });
