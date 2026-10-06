@@ -1,0 +1,21 @@
+# Node
+node_modules/
+www/
+
+# Android build output
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/src/main/assets/capacitor.config.json~
+*.apk
+*.aab
+*.keystore
+!debug.keystore
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

@@ -1,0 +1,19 @@
+{
+  "appId": "com.arsam92.case404",
+  "appName": "CASE 404",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#0a0e17"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#0a0e17",
+      "showSpinner": false,
+      "launchAutoHide": true
+    }
+  }
+}

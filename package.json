@@ -1,0 +1,22 @@
+{
+  "name": "case-404",
+  "version": "0.1.0",
+  "description": "CASE 404 — a story-driven investigation & courtroom game. 23 cases. One truth.",
+  "author": "arsam92",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve . -l 5173",
+    "build:web": "node scripts/build-web.js",
+    "cap:sync": "npm run build:web && npx cap sync android",
+    "apk:debug": "npm run cap:sync && cd android && ./gradlew assembleDebug",
+    "apk:release": "npm run cap:sync && cd android && ./gradlew assembleRelease"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  }
+}
