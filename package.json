@@ -1,7 +1,7 @@
 {
   "name": "case-404",
-  "version": "0.1.0",
-  "description": "CASE 404 — a story-driven investigation & courtroom game. 23 cases. One truth.",
+  "version": "0.2.0",
+  "description": "CASE 404 — a story-driven investigation & courtroom game. 23 cases. One truth. 19-language localization.",
   "author": "arsam92",
   "license": "MIT",
   "type": "module",

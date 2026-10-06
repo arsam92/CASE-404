@@ -4,6 +4,7 @@ import { Engine } from './engine/engine.js';
 import { bus } from './engine/bus.js';
 import { Audio } from './engine/audio.js';
 import { Store } from './engine/save.js';
+import { initI18n } from './engine/i18n.js';
 
 function unlock() {
   Audio.init();
@@ -33,4 +34,5 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) Store.auto();
 });
 
+await initI18n();
 Engine.boot();
