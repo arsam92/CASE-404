@@ -5,6 +5,7 @@ import { G, applyEffects, reqOk, rel } from '../engine/state.js';
 import { Audio } from '../engine/audio.js';
 import { HUD, elx, avatarEl, lookupChar } from '../ui/hud.js';
 import { EvidenceUI } from './evidence.js';
+import { t } from '../engine/i18n.js';
 
 export function runDialogue(stage, phase, done) {
   const dlg = (G.caseData.dialogues || {})[phase.npc] || (G.sharedDialogues || {})[phase.npc];
@@ -89,7 +90,7 @@ export function runDialogue(stage, phase, done) {
           if (opt.effects) applyEffects(opt.effects, { caseId: G.s.caseState?.caseId });
           if (opt.present) {
             // confrontation: pick evidence
-            const evId = await EvidenceUI.presentSheet({ title: 'CONFRONT WITH EVIDENCE' });
+            const evId = await EvidenceUI.presentSheet({ title: t('confront','CONFRONT WITH EVIDENCE') });
             if (!evId) return; // cancelled — choose again
             if (evId === opt.correct) {
               Audio.sfx('reveal'); HUD.redFlash();
@@ -100,7 +101,7 @@ export function runDialogue(stage, phase, done) {
             } else {
               Audio.sfx('fail');
               G.s.caseState && (G.s.caseState.penalty += 1);
-              HUD.toast('They do not waver. Wrong evidence.', 'bad');
+              HUD.toast(t('wrongEvidence','They do not waver. Wrong evidence.'), 'bad');
               await playInline(opt.wrong || [{ t: '"That proves nothing," ' + (lookupChar(phase.npc)?.name?.split(' ')[0] || 'they') + ' says flatly.' }]);
               showNode(nodeId); // stay — let the player pick another option
             }
