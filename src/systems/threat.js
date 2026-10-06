@@ -7,6 +7,8 @@ import { bus } from '../engine/bus.js';
 import { Audio } from '../engine/audio.js';
 import { Store } from '../engine/save.js';
 import { HUD, elx } from '../ui/hud.js';
+import { Glitch } from './glitch.js';
+import { Haptics } from './haptics.js';
 
 export const Threats = {
   raise(n) {
@@ -15,6 +17,10 @@ export const Threats = {
     G.s.threat.events.push({ level: n, label: THREAT_LABELS[n] || 'UNKNOWN', at: Date.now() });
     Audio.sfx('threat');
     HUD.redFlash();
+    Haptics.threat();
+    Glitch.burst('hard');
+    Glitch.onThreatChanged();
+    HUD.refreshThreatBadge?.();
 
     const hud = document.getElementById('hud');
     const b = elx('div', 'threat-banner');
@@ -23,5 +29,6 @@ export const Threats = {
     requestAnimationFrame(() => b.classList.add('show'));
     setTimeout(() => { b.classList.remove('show'); setTimeout(() => b.remove(), 500); }, 3400);
     Store.auto();
+    bus.emit('fx:threat', { n });
   }
 };

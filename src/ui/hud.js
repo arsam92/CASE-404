@@ -3,6 +3,9 @@
 import { G } from '../engine/state.js';
 import { bus } from '../engine/bus.js';
 import { Audio } from '../engine/audio.js';
+import { THREAT_LABELS } from '../engine/state.js';
+import { Glitch } from '../systems/glitch.js';
+import { Haptics } from '../systems/haptics.js';
 
 function el(tag, cls, html) {
   const e = document.createElement(tag);
@@ -64,18 +67,34 @@ export const HUD = {
       bar.innerHTML = `
         <button class="tb-btn" id="tbMenu" title="Pause"><span>II</span></button>
         <div class="tb-case"><span class="tb-code"></span><span class="tb-title"></span></div>
+        <div class="tb-threat" id="tbThreat" title="Threat level"></div>
         <div class="tb-actions">
           <button class="tb-btn" id="tbEvidence" title="Evidence"><span>EV</span></button>
           <button class="tb-btn" id="tbBoard" title="Board"><span>BD</span></button>
           <button class="tb-btn tb-phone" id="tbPhone" title="Phone"><span>P</span></button>
         </div>`;
-      bar.querySelector('#tbMenu').onclick = () => { Audio.sfx('click'); bus.emit('nav', 'pause'); };
-      bar.querySelector('#tbEvidence').onclick = () => { Audio.sfx('click'); bus.emit('open', 'evidence'); };
-      bar.querySelector('#tbBoard').onclick = () => { Audio.sfx('click'); bus.emit('open', 'board'); };
-      bar.querySelector('#tbPhone').onclick = () => { Audio.sfx('click'); bus.emit('open', 'phone'); };
+      bar.querySelector('#tbMenu').onclick = () => { Audio.sfx('click'); Haptics.light(); bus.emit('nav', 'pause'); };
+      bar.querySelector('#tbEvidence').onclick = () => { Audio.sfx('click'); Haptics.light(); bus.emit('open', 'evidence'); };
+      bar.querySelector('#tbBoard').onclick = () => { Audio.sfx('click'); Haptics.light(); bus.emit('open', 'board'); };
+      bar.querySelector('#tbPhone').onclick = () => { Audio.sfx('click'); Haptics.light(); bus.emit('open', 'phone'); };
     }
     bar.querySelector('.tb-code').textContent = data.code || '';
     bar.querySelector('.tb-title').textContent = data.title || '';
+    this.refreshThreatBadge();
+  },
+
+  refreshThreatBadge() {
+    const el = document.getElementById('tbThreat');
+    if (!el) return;
+    const lvl = G.s?.threat?.level ?? 0;
+    if (lvl <= 0) {
+      el.textContent = '';
+      el.className = 'tb-threat';
+      return;
+    }
+    el.className = 'tb-threat on' + (lvl >= 5 ? ' critical' : lvl >= 3 ? ' high' : '');
+    el.innerHTML = `<span class="tb-t-num">T${lvl}</span>`;
+    el.title = `Threat ${lvl}/7 — ${THREAT_LABELS[lvl] || ''}`;
   },
 
   /* ---------- big center stamp ---------- */
@@ -85,6 +104,7 @@ export const HUD = {
       s.innerHTML = `<div class="stamp" style="--stamp-c:${color}"><span>${text}</span>${sub ? `<em>${sub}</em>` : ''}</div>`;
       this.root.appendChild(s);
       Audio.sfx('stamp');
+      Haptics.medium();
       setTimeout(() => s.classList.add('out'), 1500);
       setTimeout(() => { s.remove(); res(); }, 2000);
     });
@@ -96,25 +116,26 @@ export const HUD = {
     setTimeout(() => f.remove(), 650);
   },
 
-  /* ---------- typewriter ---------- */
+  /* ---------- typewriter (with optional 404 corruption at high threat) ---------- */
   typewriter(elText, text, speed, onChar) {
     const cpsMap = { slow: 18, normal: 34, fast: 60, instant: Infinity };
     const cps = cpsMap[speed] ?? 34;
     let i = 0, done = false, timer = null;
+    // Soft-corrupt display text when threat is high (original text stays for skip)
+    const display = Glitch.corruptText(text);
     elText.textContent = '';
     const step = () => {
       if (done) return;
-      // reveal next chunk (multiple chars per tick for slow devices)
-      const chunk = cps === Infinity ? text.length : 1;
-      i = Math.min(text.length, i + chunk);
-      elText.textContent = text.slice(0, i);
-      if (onChar && i < text.length && i % 3 === 0) onChar();
-      if (i >= text.length) { done = true; clearInterval(timer); }
+      const chunk = cps === Infinity ? display.length : 1;
+      i = Math.min(display.length, i + chunk);
+      elText.textContent = display.slice(0, i);
+      if (onChar && i < display.length && i % 3 === 0) onChar();
+      if (i >= display.length) { done = true; clearInterval(timer); }
     };
     if (cps === Infinity) { step(); done = true; }
     else timer = setInterval(step, 1000 / cps);
     return {
-      finish() { done = true; clearInterval(timer); elText.textContent = text; },
+      finish() { done = true; clearInterval(timer); elText.textContent = text; }, // reveal clean original on skip
       get done() { return done; }
     };
   }
