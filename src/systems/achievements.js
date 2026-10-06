@@ -46,7 +46,6 @@ export const Achievements = {
     return Object.keys(G.s.achievements.unlocked).length;
   },
 
-  /** Force-unlock by id (from effect achieve:ID). */
   unlock(id, silent = false) {
     this.ensureState();
     if (G.s.achievements.unlocked[id]) return false;
@@ -63,11 +62,12 @@ export const Achievements = {
     const icon = def?.icon || '★';
     HUD.toast(`${icon}  ACHIEVEMENT — ${title}`, 'good');
     Audio.sfx('success');
-    Haptics.success();
-    if (id === 'archive_glitch') Glitch.burst('hard');
+    try { Haptics.success(); } catch {}
+    if (id === 'archive_glitch') {
+      try { Glitch.burst('hard'); } catch {}
+    }
   },
 
-  /** Scan all defs; unlock any whose req now passes. */
   async check() {
     await this.load();
     this.ensureState();
@@ -85,18 +85,15 @@ export const Achievements = {
     return any;
   },
 
-  /** Derive helper flags from live state so req strings stay simple. */
   _sideFlags() {
-    // board connections
     if ((G.s.board?.links?.length || 0) >= 8) G.s.flags.ach_board8 = true;
-    // met NPCs
     const met = Object.values(G.s.npc || {}).filter(n => n.met).length;
     if (met >= 10) G.s.flags.ach_met10 = true;
   }
 };
 
-// Re-check after important state changes
 bus.on('state-changed', () => { Achievements.check(); });
 bus.on('fx:ev', () => { Achievements.check(); });
 bus.on('fx:endcase', () => { Achievements.check(); });
 bus.on('fx:threat', () => { Achievements.check(); });
+bus.on('fx:achieve', e => { Achievements.unlock(e.id); });
