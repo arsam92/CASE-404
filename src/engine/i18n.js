@@ -15,6 +15,7 @@ export async function initI18n() {
   if (!catalog) catalog = await fetch('./i18n/locales.json').then(r => r.json());
   current = G.s?.settings?.language || localStorage.getItem('case404.language') || 'en';
   if (!catalog[current]) current = 'en';
+  if (G.s?.settings) G.s.settings.language = current;
   applyDirection();
   return current;
 }
