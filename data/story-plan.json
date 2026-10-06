@@ -1,0 +1,89 @@
+{
+  "title": "CASE 404 — Master Story Plan",
+  "premise": "In 2004 a fire destroyed the Meridian County Records Archive and a case file numbered 404 was erased from existence. Twenty years later, a hidden network called the Registry — founded by DA Richard Hale and executed by attorney Victor Kessler — has been erasing, altering and stealing case records to control outcomes across the county. Their tool leaves one signature on every erased file: ARCHIVE SYNC ERROR 404. Special Investigator James Carter, son of the detective they erased, is unknowingly hired into the middle of it.",
+  "villains": {
+    "registry": "The Registry — the hidden network: DA Richard Hale (founder), Victor Kessler (executor), Northbridge Logistics (funding), Aegis Security (muscle), corrupt insiders across police, records and courts.",
+    "signature": "Every erasure leaves 'ARCHIVE SYNC ERROR 404'. The number appears as a case number (2004-404), a log error, a line item (client 404), and finally as the truth itself."
+  },
+  "protagonist_truth": "Robert Carter — the player's father — was the detective on CASE 2004-404. He discovered the Registry's founding erasure. They framed him for evidence tampering, burned the archive, deleted his name, and he died in disgrace in 2005. Hayes designed the player's training case 000 as file '404-C' — half arrogance, half warning: the Registry filed the player's hiring paperwork under a 404-tagged operation from day one.",
+  "timeline": [
+    "1998 — Robert Carter receives the engraved pocket watch from Edward Marsh (a favor owed).",
+    "2004 — Detective Robert Carter investigates organized evidence tampering; opens CASE 404.",
+    "2004 — The archive 'fire'. CASE 404 evidence destroyed. Carter framed, dismissed, erased.",
+    "2005 — Robert Carter dies in disgrace. His son James is six years old.",
+    "2019 — File 2019-1183: Bishop falsifies Northbridge inspection sign-offs. Helen Voss starts noticing patterns.",
+    "2024 (Year One) — James graduates. Training case 000 is filed as 404-C. He is assigned to the records beat. CASE 001 opens."
+  ],
+  "characters": {
+    "allies": ["Sarah Miller (forensics, coerced past — the Registry's leverage)", "Emma Reed (junior prosecutor)", "Michael Hayes (mentor, 2004 witness)", "Marcus Miller (Sarah's brother, homicide)", "Rhea Voss (Helen's sister, insurance fire investigator)"],
+    "opposition": ["Richard Hale (DA, hidden mastermind)", "Victor Kessler (executor)", "Alan Bishop (small cog, CASE 001 killer)", "Northbridge Logistics", "Aegis Security", "Mr. Gray (Aegis field man, voice of threat messages)"],
+    "wildcards": ["Judge Wilson (kept a copy of the 404 docket — decide his role in the finale)", "Nina Park (witness → suspect → survivor)", "Sam Okafor (the quiet man who wrote everything down)", "Daniel Fox (rival → informant inside the academy)"]
+  },
+  "arcs": [
+    { "cases": "001-005", "label": "Introduction — how the world works", "goal": "Teach the systems, build the core relationships, plant: phone #8821, the watch, Nina Park, Northbridge, Sam Okafor." },
+    { "cases": "006-010", "label": "Connections — the first links", "goal": "Cases stop looking unrelated: the ledger, the lockup, the shells. Aegis and Kessler surface as a pattern. First courtroom duel with Kessler." },
+    { "cases": "011-013", "label": "404 — the signature", "goal": "The watch leads to Robert Carter. The player's father enters the story. The 404 signature is confirmed on erased files. Threats begin." },
+    { "cases": "014-017", "label": "Pressure — personal costs", "goal": "Marcus disappears; Nina is a suspect; evidence is stolen; the apartment is hit. The investigation turns personal and dangerous." },
+    { "cases": "018-020", "label": "Consequences — decisions pay out", "goal": "Sarah's secret strains; early choices (Okafor, Nina, Bishop, Kessler's offer) decide who stands with you. Motion to reopen 2004." },
+    { "cases": "021-023", "label": "Resolution — one truth", "goal": "The betrayal that depends on trust. FILE 404 opened. Final courtroom: choose the accusation. Endings A-E." }
+  ],
+  "caseConnections": [
+    "Phone #8821: CASE 002 (found) → 008 (resurfaces) → 009 (owner identified: Aegis consultant 'Mr. Gray').",
+    "Nina Park: CASE 003 (witness) → 014 (suspect in Marcus's disappearance) → 021 (her testimony tips the trial).",
+    "Pocket watch 'R.C.': CASE 004 (found in safe) → 011 (pawn shop — Robert Carter) → 022 (father's story).",
+    "Northbridge Logistics: 005 (death) → 006 (ledger) → 017 (manifests) → 020 (logs prove murder).",
+    "Sam Okafor: 005 ('saw nothing') → 015 (protected) → 020 (his logs break the case).",
+    "Alan Bishop: 001 (killer, convicted or fled) → 012 (resurfaces with information — or does not).",
+    "Helen Voss: 001 (victim) → 007 (her sister Rhea investigates the fire) → 022 (her note 'check the fire' was the map).",
+    "The torn stub '404': 001 (Sarah finds it) → 013 (pattern confirmed) → 022 (the file was never missing).",
+    "Rhea Voss: 007 (arson investigator) → 011/020 (joins the 2004 reopening).",
+    "Kessler: 001 (visitor pass — the misleading clue that was real) → 010 (courtroom duel) → 019 (the offer) → 023 (final verdict)."
+  ],
+  "threatLadder": [
+    { "level": 1, "case": 13, "event": "Anonymous messages: 'Stop investigating CASE 13.'" },
+    { "level": 2, "case": 13, "event": "The player notices they are being followed (tension scenes)." },
+    { "level": 3, "case": 14, "event": "Someone close to the player is threatened (Sarah / Nina)." },
+    { "level": 4, "case": 16, "event": "Evidence is stolen from the archive." },
+    { "level": 5, "case": 14, "event": "Marcus Miller disappears." },
+    { "level": 6, "case": 17, "event": "Break-in at the player's apartment." },
+    { "level": 7, "case": 18, "event": "Direct attack / trapped in the Records Annex (action gameplay)." }
+  ],
+  "betrayal_design": {
+    "primary": "Sarah Miller — CASE 021. Her brother's fate is the leverage. If trust < threshold and the player ignored her warnings (CASE 018 choice), the Registry forces her hand: she delivers the evidence chain and Marcus's location dies with it. If trust is high and the player warned her in 018, she fakes the betrayal, feeds the Registry false copies, and becomes the case that breaks them.",
+    "secondary": "Michael Hayes — CASE 019/021. If the player exposes Hayes's 2004 signature cruelly, he goes dark; if handled with respect he testifies in 023 — and in one branch takes a bullet meant for the player.",
+    "record": "Every trust-affecting choice from CASE 001 onward feeds these thresholds. Nothing is reset between cases."
+  },
+  "endings": {
+    "A": { "title": "JUSTICE", "requires": "Registry exposed + full chain intact + strong final courtroom performance.", "summary": "Hale and Kessler fall in Courtroom 3. The erased names are restored to the record, starting with Robert Carter." },
+    "B": { "title": "WRONG ACCUSATION", "requires": "Final accusation targets Kessler without the Hale chain, or key witnesses were alienated (Nina hostile, Okafor lost).", "summary": "A conviction is won. The Registry survives. Someone else's name burns." },
+    "C": { "title": "TRUTH WITHOUT PROOF", "requires": "Truth known but evidence stolen/destroyed (threat outcomes lost it) or allies unavailable.", "summary": "James publishes everything he cannot prove. The record stays closed. The story does not." },
+    "D": { "title": "BETRAYAL", "requires": "Sarah's trust below threshold at CASE 021, or Hayes alienated AND evidence mishandled.", "summary": "The file with James's face on it becomes the next one to go missing." },
+    "E": { "title": "404", "requires": "Registry exposed + archive restored (Wilson's docket recovered) + Sarah trust high + Hayes testified + the watch + the stub + the note all connected.", "summary": "The deepest truth: CASE 404 was never missing. It was waiting — for the one investigator who would not stop." }
+  },
+  "casePlan": [
+    { "id": 0, "title": "The Lesson", "teaches": "hotspots, dialogue, evidence, contradiction, decision", "seed": "training file stamped 404-C" },
+    { "id": 1, "title": "The Missing File", "crimes": ["murder staged as suicide", "evidence tampering"], "plants": ["file 2019-1183 → Northbridge", "ERROR 404 signature", "torn stub 404", "Kessler's first appearance", "Helen's note: 'check the fire'"], "connections": ["006", "011", "022"] },
+    { "id": 2, "title": "The Silent Courier", "plants": ["burner phone #8821", "Northbridge dispatch", "Leo Vance (minor fixer)"], "connections": ["008", "009"] },
+    { "id": 3, "title": "The Glass House", "plants": ["Nina Park (witness)", "Veridian Restaurant (Registry meeting spot)", "Adrik Sole"], "connections": ["014", "021"] },
+    { "id": 4, "title": "The Inheritance", "plants": ["pocket watch R.C.", "Edward Marsh's 2004 connection", "heirs' secrets", "treated-witness memory flag"], "connections": ["011", "012", "022"] },
+    { "id": 5, "title": "The Blue Collar", "plants": ["Northbridge warehouse death", "Sam Okafor's hidden log", "foreman Denny Craig"], "connections": ["006", "015", "020"] },
+    { "id": 6, "title": "The Golden Ledger", "plants": ["ledger line: AEGIS consulting", "client 404", "Marcus Bell's death"], "connections": ["005", "009", "017"] },
+    { "id": 7, "title": "The Paper Trail", "plants": ["second archive fire (echo of 2004)", "Rhea Voss", "burn accelerant pattern"], "connections": ["001", "011", "020"] },
+    { "id": 8, "title": "The Recurring Number", "plants": ["#8821 resurfaces", "Mr. Gray's voice", "extortion victim linked to 006 ledger"], "connections": ["002", "006", "009"] },
+    { "id": 9, "title": "The Chain of Custody", "plants": ["lockup breach", "Marcus Miller as ally", "#8821 owner: Aegis consultant"], "connections": ["002", "008", "014"] },
+    { "id": 10, "title": "The Quiet Partners", "plants": ["shell web: Northbridge → Aegis → Registry Trust", "DA Hale's first on-page appearance", "Kessler courtroom duel #1"], "connections": ["017", "019", "023"] },
+    { "id": 11, "title": "The Carter File", "plants": ["watch → Robert Carter", "2004 archive fire", "father's framing", "Rhea Voss joins"], "connections": ["004", "007", "022"] },
+    { "id": 12, "title": "The Long Memory", "plants": ["witness memory payoff (004 treatment)", "Bishop resurfaces (if fled)", "Marcus reassigned"], "connections": ["004", "001", "014"] },
+    { "id": 13, "title": "ERROR 404", "plants": ["signature confirmed on erased files", "first direct threat", "surveillance begins"], "connections": ["001", "022"] },
+    { "id": 14, "title": "The Fall", "plants": ["Marcus disappears", "Nina Park becomes suspect", "protect-or-bury decision"], "connections": ["003", "009", "021"] },
+    { "id": 15, "title": "Witness Protection", "plants": ["Okafor agrees to talk", "garage escape (action)", "Aegis tail identified"], "connections": ["005", "020"] },
+    { "id": 16, "title": "The Stolen Truth", "plants": ["archive breach", "key evidence stolen", "recovery operation"], "connections": ["017", "023"] },
+    { "id": 17, "title": "The Northbridge File", "plants": ["manifests expose pipeline", "apartment break-in", "Hale named indirectly"], "connections": ["006", "010", "020"] },
+    { "id": 18, "title": "Cold Coffee", "plants": ["Sarah's secret strains", "Marcus's fate", "annex trap (action escape)", "warn-Sarah decision (feeds 021)"], "connections": ["009", "021"] },
+    { "id": 19, "title": "The Turncoat", "plants": ["Kessler's offer: accept/refuse/fake", "Hayes's 2004 signature", "self-definition decision"], "connections": ["010", "023"] },
+    { "id": 20, "title": "The Inheritor", "plants": ["Okafor's logs → 005 murder", "motion to reopen 2004", "Registry counterattack"], "connections": ["005", "011", "023"] },
+    { "id": 21, "title": "The Broken Vow", "plants": ["the betrayal (trust-dependent)", "Hayes's sacrifice branch", "evidence chain delivered or saved"], "connections": ["014", "018", "023"] },
+    { "id": 22, "title": "FILE 404", "plants": ["2004 CASE 404 fully reconstructed", "Robert Carter's framing", "Hayes's warning explained", "Wilson's docket"], "connections": ["011", "013", "023"] },
+    { "id": 23, "title": "The Final Record", "plants": ["final courtroom", "accusation choice: Hale / Kessler / wrong target", "endings A-E computed from the entire record"], "connections": ["ALL"] }
+  ]
+}

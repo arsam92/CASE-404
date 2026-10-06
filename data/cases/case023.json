@@ -1,0 +1,34 @@
+{
+  "caseId": 23,
+  "code": "CASE 023",
+  "title": "The Final Record",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "Everything converges in Courtroom 3. Twenty-three cases. One truth. Choose the name you speak — and live with what the record says about you.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "final courtroom",
+      "accusation choice: Hale / Kessler / wrong target",
+      "endings A-E computed from the entire record"
+    ],
+    "connections": [
+      "ALL"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

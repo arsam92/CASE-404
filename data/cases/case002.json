@@ -1,0 +1,35 @@
+{
+  "caseId": 2,
+  "code": "CASE 002",
+  "title": "The Silent Courier",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "A courier is found unconscious, his delivery missing: a burner phone. Its call log holds a number that will follow you for twenty cases. Phone #8821 enters the record.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "burner phone #8821",
+      "Northbridge dispatch",
+      "Leo Vance (minor fixer)"
+    ],
+    "connections": [
+      "008",
+      "009"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

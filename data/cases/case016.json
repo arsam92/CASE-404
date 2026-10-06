@@ -1,0 +1,41 @@
+{
+  "caseId": 16,
+  "code": "CASE 016",
+  "title": "The Stolen Truth",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "The evidence archive is breached and the case that matters most is stolen back. Recover it before the chain of custody breaks forever.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "archive breach",
+      "key evidence stolen",
+      "recovery operation"
+    ],
+    "connections": [
+      "017",
+      "023"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [
+    {
+      "level": 4,
+      "case": 16,
+      "event": "Evidence is stolen from the archive."
+    }
+  ],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

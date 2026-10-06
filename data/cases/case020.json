@@ -1,0 +1,36 @@
+{
+  "caseId": 20,
+  "code": "CASE 020",
+  "title": "The Inheritor",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "Sam Okafor's maintenance logs prove CASE 005 was murder. The motion to reopen the 2004 archive fire is filed. The Registry reacts.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "Okafor's logs → 005 murder",
+      "motion to reopen 2004",
+      "Registry counterattack"
+    ],
+    "connections": [
+      "005",
+      "011",
+      "023"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

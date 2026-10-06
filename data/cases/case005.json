@@ -1,0 +1,36 @@
+{
+  "caseId": 5,
+  "code": "CASE 005",
+  "title": "The Blue Collar",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "A maintenance worker dies in a Northbridge Logistics warehouse. The foreman calls it an accident. A quiet forklift operator named Sam Okafor saw nothing. Officially.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "Northbridge warehouse death",
+      "Sam Okafor's hidden log",
+      "foreman Denny Craig"
+    ],
+    "connections": [
+      "006",
+      "015",
+      "020"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

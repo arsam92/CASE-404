@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "id": 0, "code": "CASE 000", "title": "The Lesson", "status": "playable",
+      "brief": "Training exercise at the Meridian Investigative Academy. A stolen medal. Three suspects. Your first lesson: evidence does not prove guilt — people do."
+    },
+    {
+      "id": 1, "code": "CASE 001", "title": "The Missing File", "status": "playable",
+      "brief": "A records clerk is found dead in the County Records Annex and file 2019-1183 is gone from the vault. The county calls it suicide. The vault log disagrees."
+    },
+    {
+      "id": 2, "code": "CASE 002", "title": "The Silent Courier", "status": "development",
+      "brief": "A courier is found unconscious, his delivery missing: a burner phone. Its call log holds a number that will follow you for twenty cases. Phone #8821 enters the record."
+    },
+    {
+      "id": 3, "code": "CASE 003", "title": "The Glass House", "status": "development",
+      "brief": "A food critic collapses at the Veridian table he never got to review. A young waitress named Nina Park sees more than she says. Remember her."
+    },
+    {
+      "id": 4, "code": "CASE 004", "title": "The Inheritance", "status": "development",
+      "brief": "Edward Marsh dies with three heirs and one safe. Inside the safe: a pocket watch engraved with initials that mean nothing to you yet. R.C."
+    },
+    {
+      "id": 5, "code": "CASE 005", "title": "The Blue Collar", "status": "development",
+      "brief": "A maintenance worker dies in a Northbridge Logistics warehouse. The foreman calls it an accident. A quiet forklift operator named Sam Okafor saw nothing. Officially."
+    },
+    {
+      "id": 6, "code": "CASE 006", "title": "The Golden Ledger", "status": "development",
+      "brief": "An accountant who once audited Northbridge Logistics runs, then floats. His ledger lists payments to 'AEGIS — consulting' and one line item he circled twice: client 404."
+    },
+    {
+      "id": 7, "code": "CASE 007", "title": "The Paper Trail", "status": "development",
+      "brief": "A document storage facility burns. Arson, professionally. Among the ashes: a signature you have seen before. Files do not burn themselves."
+    },
+    {
+      "id": 8, "code": "CASE 008", "title": "The Recurring Number", "status": "development",
+      "brief": "An extortion case opens a drawer that should have stayed shut: burner phone #8821, the same number that vanished in CASE 002. Someone is answering it."
+    },
+    {
+      "id": 9, "code": "CASE 009", "title": "The Chain of Custody", "status": "development",
+      "brief": "Evidence disappears from a police lockup between two signed transfers. Detective Marcus Miller warns you: records cases spook people. He has no idea how right he is."
+    },
+    {
+      "id": 10, "code": "CASE 010", "title": "The Quiet Partners", "status": "development",
+      "brief": "Shell companies inside shell companies: Northbridge, Aegis, and a trust with no name. Your first full courtroom duel against Victor Kessler."
+    },
+    {
+      "id": 11, "code": "CASE 011", "title": "The Carter File", "status": "development",
+      "brief": "The watch from CASE 004 resurfaces in a pawn shop. It belonged to Detective Robert Carter — your father — the detective who was erased in 2005."
+    },
+    {
+      "id": 12, "code": "CASE 012", "title": "The Long Memory", "status": "development",
+      "brief": "A witness you treated kindly — or badly — remembers. Alan Bishop resurfaces with a price. Marcus Miller is quietly reassigned for helping you."
+    },
+    {
+      "id": 13, "code": "CASE 013", "title": "ERROR 404", "status": "development",
+      "brief": "The signature appears on erased files across two decades. Then your own phone lights up: STOP INVESTIGATING CASE 13. The game has noticed you."
+    },
+    {
+      "id": 14, "code": "CASE 014", "title": "The Fall", "status": "development",
+      "brief": "Detective Marcus Miller disappears. The only witness is Nina Park — your witness from CASE 003 — and now she is a suspect. Protect her, or bury her."
+    },
+    {
+      "id": 15, "code": "CASE 015", "title": "Witness Protection", "status": "development",
+      "brief": "Sam Okafor finally agrees to talk. So does the man sent to stop him. A parking garage. A countdown. Your keys are in the ignition."
+    },
+    {
+      "id": 16, "code": "CASE 016", "title": "The Stolen Truth", "status": "development",
+      "brief": "The evidence archive is breached and the case that matters most is stolen back. Recover it before the chain of custody breaks forever."
+    },
+    {
+      "id": 17, "code": "CASE 017", "title": "The Northbridge File", "status": "development",
+      "brief": "Shipping manifests expose the pipeline: how evidence moved, how files vanished, who paid. That night, someone is in your apartment."
+    },
+    {
+      "id": 18, "code": "CASE 018", "title": "Cold Coffee", "status": "development",
+      "brief": "Sarah is afraid of something she will not name. Marcus's fate surfaces. And the Records Annex you thought you knew becomes a trap with you inside."
+    },
+    {
+      "id": 19, "code": "CASE 019", "title": "The Turncoat", "status": "development",
+      "brief": "Victor Kessler makes you an offer you were never meant to refuse. Michael Hayes's real role in 2004 comes to light. Decide who you are."
+    },
+    {
+      "id": 20, "code": "CASE 020", "title": "The Inheritor", "status": "development",
+      "brief": "Sam Okafor's maintenance logs prove CASE 005 was murder. The motion to reopen the 2004 archive fire is filed. The Registry reacts."
+    },
+    {
+      "id": 21, "code": "CASE 021", "title": "The Broken Vow", "status": "development",
+      "brief": "The betrayal. Someone you trusted hands the file to the enemy — unless you built a trust strong enough to survive what was asked of them."
+    },
+    {
+      "id": 22, "code": "CASE 022", "title": "FILE 404", "status": "development",
+      "brief": "2004. Detective Robert Carter found the Registry's founding erasure. They framed him, burned the archive, and deleted his name. The file was never lost. It was waiting."
+    },
+    {
+      "id": 23, "code": "CASE 023", "title": "The Final Record", "status": "development",
+      "brief": "Everything converges in Courtroom 3. Twenty-three cases. One truth. Choose the name you speak — and live with what the record says about you."
+    }
+  ]
+}

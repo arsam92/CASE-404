@@ -1,0 +1,35 @@
+{
+  "caseId": 15,
+  "code": "CASE 015",
+  "title": "Witness Protection",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "Sam Okafor finally agrees to talk. So does the man sent to stop him. A parking garage. A countdown. Your keys are in the ignition.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "Okafor agrees to talk",
+      "garage escape (action)",
+      "Aegis tail identified"
+    ],
+    "connections": [
+      "005",
+      "020"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "james": {
+    "name": "James Carter",
+    "role": "Special Investigator, District Attorney's Office",
+    "color": "#4da3ff",
+    "bio": "Licensed special investigator with unusual authority: he investigates, and he brings accusations to court. Newly certified. His father died when he was young — officially a disgrace. James does not believe the official part."
+  },
+  "hayes": {
+    "name": "Michael Hayes",
+    "role": "Instructor, Meridian Investigative Academy",
+    "color": "#e8b04b",
+    "bio": "Twenty-eight years in the field before the academy. Teaches one rule above all: evidence first, accusation second. He knew James's father. He has never said so out loud.",
+    "secret": "In 2004, as a young detective, Hayes signed the evidence transfer that put Robert Carter's file into the archive — three weeks before the fire."
+  },
+  "sarah": {
+    "name": "Sarah Miller",
+    "role": "Senior Forensic Analyst, Precinct 9",
+    "color": "#3ddc84",
+    "bio": "The best forensic analyst in the county and the first ally James earns. Reads autopsies like confessions. Protective of her brother Marcus. Talks to the dead because the living lie.",
+    "secret": "In 2019 she was coerced into re-signing a false autopsy addendum. The Registry keeps a copy. This is why they can hurt her."
+  },
+  "marcus": {
+    "name": "Marcus Miller",
+    "role": "Homicide Detective, Precinct 9",
+    "color": "#8fa0bd",
+    "bio": "Sarah's older brother. A quiet, stubborn homicide detective who noticed that records cases spook people before anyone else said it out loud."
+  },
+  "emma": {
+    "name": "Emma Reed",
+    "role": "Junior Prosecutor, District Attorney's Office",
+    "color": "#c77dff",
+    "bio": "Assigned as James's courtroom counterpart. Sharp, procedural, secretly idealistic. Believes the record is the only weapon that cannot be stolen — which is why it terrifies her when it can."
+  },
+  "wilson": {
+    "name": "Judge Marcus Wilson",
+    "role": "Presiding Judge, Meridian County Court",
+    "color": "#e8b04b",
+    "bio": "Strict, precise, allergic to sloppy evidence. Presides over most county inquests. In 2004 he was a junior court clerk on a case file numbered 404. He has never spoken about it.",
+    "secret": "Wilson kept a personal copy of the 404 docket after the fire. It is hidden inside the courthouse."
+  },
+  "helen": {
+    "name": "Helen Voss",
+    "role": "Records Clerk, County Records Annex (deceased)",
+    "color": "#5a6a8a",
+    "bio": "Nineteen years cataloguing the county's memory. Found dead in the annex vault hallway on the night of October 4. She was careful. That is what killed her."
+  },
+  "tomas": {
+    "name": "Tomas Verne",
+    "role": "Night Guard, County Records Annex",
+    "color": "#8fa0bd",
+    "bio": "Night guard with a smoking habit and a bad memory for times. Easily frightened, easily blamed. Tells the truth slowly, in pieces."
+  },
+  "bishop": {
+    "name": "Alan Bishop",
+    "role": "Chief Archivist, County Records",
+    "color": "#b06b6b",
+    "bio": "Twenty-two years managing county records. Helen's supervisor. For years he sold sign-off alterations to people who needed the past rewritten. Helen found the dates. He panicked."
+  },
+  "kessler": {
+    "name": "Victor Kessler",
+    "role": "Attorney — Kessler & Associates / Aegis Security",
+    "color": "#ff3b4e",
+    "bio": "The county's most expensive lawyer and the owner of Aegis Security. Requests files, attends funerals, wins cases. Legally. Always legally.",
+    "secret": "Kessler executes the Registry's erasures. In 2004, as a junior fixer, he drafted the falsified evidence report that destroyed Robert Carter."
+  },
+  "nina": {
+    "name": "Nina Park",
+    "role": "Waitress, Veridian Restaurant",
+    "color": "#3ddc84",
+    "bio": "Helen Voss's neighbor and the waitress who saw too much at the Veridian. Frightened of attention. The kind of witness that cases break against."
+  },
+  "daniel": {
+    "name": "Daniel Fox",
+    "role": "Trainee, Meridian Investigative Academy",
+    "color": "#b06b6b",
+    "bio": "James's rival in training. Fast, arrogant, allergic to procedure. Stole a medal out of panic. There are worse people in this city. He will meet several of them."
+  },
+  "gus": {
+    "name": "Gus Bloom",
+    "role": "Caretaker, Meridian Investigative Academy",
+    "color": "#5a6a8a",
+    "bio": "Forty years keeping the academy standing. Polishes the display case every day at six. Knows every key and every shadow in the building."
+  },
+  "priya": {
+    "name": "Priya Nair",
+    "role": "Examiner's Aide, Meridian Investigative Academy",
+    "color": "#8fa0bd",
+    "bio": "First exam cycle, terrified of blame. Remembers corridors better than she wants to."
+  },
+  "hale": {
+    "name": "Richard Hale",
+    "role": "District Attorney, Meridian County",
+    "color": "#e8b04b",
+    "bio": "The DA. James's ultimate superior. Charming, patient, untouchable. Personally assigns James the records beat — and personally congratulates him when cases close quietly.",
+    "secret": "Hale founded the Registry. In 2004, as a rising prosecutor, he buried CASE 404 and framed Robert Carter to protect the men who funded his career."
+  },
+  "okafor": {
+    "name": "Sam Okafor",
+    "role": "Forklift Operator, Northbridge Logistics",
+    "color": "#3ddc84",
+    "bio": "Saw nothing. Officially. Keeps a private maintenance log because he does not trust paper that other people can find."
+  },
+  "bell": {
+    "name": "Marcus Bell",
+    "role": "Accountant (deceased)",
+    "color": "#5a6a8a",
+    "bio": "Northbridge's outside accountant. Kept a second ledger because he did not trust his own memory. Found floating two weeks after CASE 006 opened."
+  },
+  "rhea": {
+    "name": "Rhea Voss",
+    "role": "Insurance Investigator",
+    "color": "#c77dff",
+    "bio": "Helen Voss's younger sister. Investigates fires for a living. Started that way. Will not stop until the 2004 archive fire has a name attached."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "caseId": 8,
+  "code": "CASE 008",
+  "title": "The Recurring Number",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "An extortion case opens a drawer that should have stayed shut: burner phone #8821, the same number that vanished in CASE 002. Someone is answering it.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "#8821 resurfaces",
+      "Mr. Gray's voice",
+      "extortion victim linked to 006 ledger"
+    ],
+    "connections": [
+      "002",
+      "006",
+      "009"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

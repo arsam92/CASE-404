@@ -1,0 +1,46 @@
+{
+  "caseId": 13,
+  "code": "CASE 013",
+  "title": "ERROR 404",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "The signature appears on erased files across two decades. Then your own phone lights up: STOP INVESTIGATING CASE 13. The game has noticed you.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "signature confirmed on erased files",
+      "first direct threat",
+      "surveillance begins"
+    ],
+    "connections": [
+      "001",
+      "022"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [
+    {
+      "level": 1,
+      "case": 13,
+      "event": "Anonymous messages: 'Stop investigating CASE 13.'"
+    },
+    {
+      "level": 2,
+      "case": 13,
+      "event": "The player notices they are being followed (tension scenes)."
+    }
+  ],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

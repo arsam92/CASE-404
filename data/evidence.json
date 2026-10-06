@@ -1,0 +1,46 @@
+{
+  "e1183": {
+    "id": "e1183", "label": "EV-1183", "name": "File 2019-1183",
+    "importance": "key",
+    "source": "County Records Annex vault",
+    "time": "filed 2019 · recovered October 5",
+    "location": "Meridian County Records Annex",
+    "related": "Helen Voss, Alan Bishop, Northbridge Logistics",
+    "cases": "001, 006, 017",
+    "desc": "Facility inspection sign-offs for Northbridge Logistics, 2019. Three dates were altered to pass a failed inspection — the alterations were countersigned by Chief Archivist Alan Bishop. This is what Helen found. This is what she died holding.",
+    "interp": ["Proof Bishop sold falsified sign-offs.", "Northbridge Logistics paid for the falsification — follow the money.", "Whoever arranged it for Northbridge had power over the archive."]
+  },
+  "e404stub": {
+    "id": "e404stub", "label": "EV-404S", "name": "Vault Registry — Torn Stub",
+    "importance": "hidden",
+    "source": "County Records Annex, vault registry",
+    "time": "recovered October 6",
+    "location": "Meridian County Records Annex",
+    "related": "Sarah Miller",
+    "cases": "001, 013, 022",
+    "desc": "The page torn from the vault registry. Beneath Helen's entry, the stub of the missing page shows the tail of a case number: ...404. The same three digits appeared in the archive sync error the night Helen died. Sarah checked twice. It is not a glitch.",
+    "interp": ["A file numbered 404 was once checked out of this vault — and erased from the registry.", "404 may be a case number, a signature, or a warning. Too early to tell."]
+  },
+  "e_thr1": {
+    "id": "e_thr1", "label": "EV-THR1", "name": "Threat Message #1",
+    "importance": "important",
+    "source": "Player phone — saved message",
+    "time": "October 6",
+    "location": "—",
+    "related": "UNKNOWN",
+    "cases": "001, 013",
+    "desc": "\"The file is closed. Leave it closed.\" Preserved from an unknown sender. The metadata is clean — too clean, like it was written by someone who cleans metadata for a living.",
+    "interp": ["Someone believes the case is closed and wants it to stay that way.", "A professional wrote this. Amateurs threaten. Professionals inform."]
+  },
+  "e_watch": {
+    "id": "e_watch", "label": "EV-RWC", "name": "Pocket Watch, Engraved R.C.",
+    "importance": "key",
+    "source": "Marsh estate safe (CASE 004); pawn shop recovery",
+    "time": "engraved 1998 · resurfaced",
+    "location": "Halloway Pawn, East Docks",
+    "related": "Robert Carter, Edward Marsh",
+    "cases": "004, 011, 022",
+    "desc": "A silver police-issued pocket watch engraved R.C. — Robert Carter. Twenty years in the Marsh family safe, then pawned by someone who needed cash and had no idea what it was worth.",
+    "interp": ["Edward Marsh knew Robert Carter. Well enough to keep his watch.", "Robert Carter's watch was in a safe connected to the Marsh estate — the same estate tied to the 2004 archive fire."]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "caseId": 14,
+  "code": "CASE 014",
+  "title": "The Fall",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "Detective Marcus Miller disappears. The only witness is Nina Park — your witness from CASE 003 — and now she is a suspect. Protect her, or bury her.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "Marcus disappears",
+      "Nina Park becomes suspect",
+      "protect-or-bury decision"
+    ],
+    "connections": [
+      "003",
+      "009",
+      "021"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [
+    {
+      "level": 3,
+      "case": 14,
+      "event": "Someone close to the player is threatened (Sarah / Nina)."
+    },
+    {
+      "level": 5,
+      "case": 14,
+      "event": "Marcus Miller disappears."
+    }
+  ],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

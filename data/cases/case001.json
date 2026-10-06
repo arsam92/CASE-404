@@ -1,0 +1,688 @@
+{
+  "caseId": 1,
+  "code": "CASE 001",
+  "title": "The Missing File",
+  "ambient": "investigate",
+  "brief": "October 4, 21:52. Helen Voss, records clerk, is found dead in the Meridian County Records Annex. The county is calling it suicide. The vault is missing one item: file 2019-1183. The DA's office wants a special investigator's eyes on both facts. You are the special investigator.",
+  "objectives": ["Find out what really happened to Helen Voss", "Trace file 2019-1183"],
+  "startPhase": "p_intro",
+  "entryEffects": [
+    "board:case:c1|CASE 001",
+    "board:person:helen|HELEN VOSS",
+    "board:person:bishop|ALAN BISHOP",
+    "board:person:kessler|VICTOR KESSLER",
+    "board:person:emma|PROSECUTOR REED",
+    "board:link:c1|helen|VICTIM",
+    "music:investigate"
+  ],
+  "evidence": [
+    {
+      "id": "e101", "label": "EV-101", "name": "Autopsy Notes — S. Miller",
+      "importance": "key",
+      "source": "Precinct 9 forensics",
+      "time": "Time of death 20:30–21:30, Oct 4",
+      "location": "Meridian County Morgue",
+      "related": "Helen Voss, Sarah Miller",
+      "desc": "Ligature furrow shows TWO different widths — a thin cord and a wider belt or strap. One cannot fake itself. Sarah Miller's conclusion, three words long: 'Staged. Homicide. Recent.' Helen did not hang herself.",
+      "interp": ["Murder, dressed as suicide.", "The killer used what the annex had on hand — then got careless with the second ligature."]
+    },
+    {
+      "id": "e102", "label": "EV-102", "name": "Vault Registry (Paper)",
+      "importance": "important",
+      "source": "County Records Annex, vault door",
+      "time": "Entry at 19:12, Oct 4",
+      "location": "Meridian County Records Annex",
+      "related": "Helen Voss",
+      "desc": "The paper register on a clipboard by the vault. Helen's signature, 19:12, checking out FILE 2019-1183. The next page has been torn out at the spine — carefully, by someone who does not rush.",
+      "interp": ["Helen pulled the file an hour before she died.", "The torn page hid whatever was checked out before — or after."]
+    },
+    {
+      "id": "e103", "label": "EV-103", "name": "Digital Access Log",
+      "importance": "key",
+      "source": "Annex server cabinet",
+      "time": "20:58 and 21:24, Oct 4",
+      "location": "Meridian County Records Annex",
+      "related": "Badge #0451",
+      "desc": "21:24 — front vault door opens with badge #0451: the MASTER ADMIN badge, kept in the admin office, signed out to nobody. And at 20:58, the log prints a line the guard calls a glitch: ARCHIVE SYNC ERROR 404.",
+      "interp": ["Someone with admin-office access entered the vault at 21:24 — inside the murder window.", "ERROR 404 is not a routine glitch. It appears exactly when records change hands.", "Badge #0451 lives in the chief archivist's office."]
+    },
+    {
+      "id": "e104", "label": "EV-104", "name": "Helen's Phone Records",
+      "importance": "important",
+      "source": "Phone carrier, served to Precinct 9",
+      "time": "18:00–20:41, Oct 4",
+      "location": "—",
+      "related": "Helen Voss, UNKNOWN",
+      "desc": "Six incoming calls from a withheld number between 18:00 and 20:30 — each one longer than the last. Her final outgoing call: 20:41, two minutes, to her friend Nina Park.",
+      "interp": ["Someone was pressuring Helen by phone through the last hours of her life.", "She spent her last two minutes talking to a friend — not calling the police."]
+    },
+    {
+      "id": "e105", "label": "EV-105", "name": "Nina Park's Statement",
+      "importance": "important",
+      "source": "Interview — Apartment 4C hallway",
+      "time": "Oct 5",
+      "location": "Marlow Street",
+      "related": "Nina Park, Helen Voss",
+      "desc": "Nina, shaking: 'At 20:41 she told me she'd found something that shouldn't exist. A file. She said if anything happened to her it wasn't an accident.' She heard the withheld number buzz twice during the call.",
+      "interp": ["Helen knew she was in danger and told one person.", "'Shouldn't exist' — the file itself, not just its contents, was the problem."]
+    },
+    {
+      "id": "e106", "label": "EV-106", "name": "Helen's Desk Note",
+      "importance": "key",
+      "source": "Helen's desk, Records Annex",
+      "time": "Undated, recent",
+      "location": "Meridian County Records Annex",
+      "related": "Alan Bishop, Helen Voss",
+      "desc": "A memo in Helen's small, disciplined hand: 'B — wrong dates on 1183. Must check the original. NOT the copy.' Filed under a blank sheet where no one would look twice.",
+      "interp": ["'B' — someone whose name starts with B works in this building.", "Helen believed file 1183 had been altered, and that the original still existed."]
+    },
+    {
+      "id": "e107", "label": "EV-107", "name": "CCTV Maintenance Order",
+      "importance": "key",
+      "source": "Security system, admin terminal",
+      "time": "Camera offline 20:50–21:30, Oct 4",
+      "location": "Meridian County Records Annex",
+      "related": "Alan Bishop",
+      "desc": "The hallway camera was disabled for exactly the murder window — 20:50 to 21:30. Not a fault: an admin override, issued from the ADMIN OFFICE terminal on October 2, timed to run that night.",
+      "interp": ["The camera was killed from a room only senior staff enter.", "Someone scheduled darkness two days in advance."]
+    },
+    {
+      "id": "e108", "label": "EV-108", "name": "Visitor Pass — V. Kessler",
+      "importance": "misleading",
+      "source": "Front desk visitor log",
+      "time": "16:40, Oct 4",
+      "location": "Meridian County Records Annex",
+      "related": "Victor Kessler",
+      "desc": "Attorney Victor Kessler visited the annex at 16:40 and formally requested file 2019-1183. Denied — 'file missing.' He thanked the clerk and left. He is the most suspicious man in the building, and the timeline says he was long gone.",
+      "interp": ["Kessler wanted that file hours before Helen died.", "Being suspicious is not being guilty — but why does a private attorney care about a county inspection file?"]
+    },
+    {
+      "id": "e109", "label": "EV-109", "name": "Back Door Photograph",
+      "importance": "important",
+      "source": "Annex service corridor",
+      "time": "Oct 5 (your photo)",
+      "location": "Meridian County Records Annex",
+      "desc": "The back door, propped open with a pack of REDRO cigarettes. No dust in the frame — this door swings often, whatever the guard claims about locking up. The pack is full, fresh, someone's habit.",
+      "interp": ["The annex has an open secret of a door.", "A brand is a signature, if you catch the right hand buying it."]
+    },
+    {
+      "id": "e110", "label": "EV-110", "name": "Garage Exit Ticket",
+      "importance": "key",
+      "source": "Annex garage — Level B1 exit terminal",
+      "time": "20:52, Oct 4",
+      "location": "Annex Parking Garage",
+      "related": "Alan Bishop",
+      "desc": "The automated exit log. Vehicle BX-4077 — registered to ALAN BISHOP, Chief Archivist — exits the annex garage at 20:52. His stated departure time was 18:00. His stated location at 20:52 was his dining table.",
+      "interp": ["Bishop's car left the annex in the middle of the murder window.", "Not proof he was driving — proof that 'straight home at six' is a lie."]
+    },
+    {
+      "id": "e111", "label": "EV-111", "name": "Hidden Note — Hollow Book",
+      "importance": "hidden",
+      "source": "Helen's bookshelf, Apartment 4C",
+      "time": "Undated",
+      "location": "Marlow Street, Apartment 4C",
+      "related": "Helen Voss",
+      "hidden": true,
+      "desc": "Inside a hollowed detective novel, one sheet in Helen's hand: 'If something happens to me — 1183 wasn't the only one. Check the fire.' No signature. No date. She hid it like someone who expected to be gone.",
+      "interp": ["1183 was part of a pattern, not a single crime.", "'The fire' — there was a fire. County records burned once before. Ask when."]
+    }
+  ],
+  "dialogues": {
+    "sarah": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "sarah", "t": "You're the special investigator. Good. I typed my report twice and deleted the polite version both times.",
+          "opts": [
+            { "t": "Tell me about the body.", "goto": "n_body" },
+            { "t": "The county says suicide.", "goto": "n_county" },
+            { "t": "Who else has seen your findings?", "goto": "n_seen" },
+            { "t": "Thank you. Stay careful with this one.", "goto": "__end" }
+          ]
+        },
+        "n_body": {
+          "sp": "sarah", "t": "Helen Voss, fifty-one, healthy. Ligature furrow shows two widths — a thin cord over a wider strap. One width cannot fake itself. She was hanged AFTER she was dead.",
+          "effects": ["ev:e101", "rel:sarah.trust+2", "remember-sarah|Trusted the new investigator with the two-width finding"],
+          "next": "n_body2"
+        },
+        "n_body2": {
+          "sp": "sarah", "t": "Time of death between 20:30 and 21:30. And James — I filed it as homicide, and I'd appreciate it if the word 'suicide' stopped being used around me.",
+          "effects": ["remember-james|First name basis with Sarah Miller from CASE 001"],
+          "next": "start"
+        },
+        "n_county": {
+          "sp": "sarah", "t": "The county also says the vault log 'glitched'. Read my report, then decide whose version keeps you warm at night.",
+          "next": "start"
+        },
+        "n_seen": {
+          "sp": "sarah", "t": "My direct supervisor. And Detective Miller — my brother — pulled the vault registry copy before it could disappear. Between us, keep his name out of your paperwork. Please.",
+          "effects": ["cflag:c1_marcus_warn"],
+          "next": "start"
+        }
+      }
+    },
+    "tomas": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "tomas", "t": "I already told the county everything. I don't— I've been a guard here eleven years. Eleven. Nothing like this. Nothing.",
+          "opts": [
+            { "t": "Walk me through your evening.", "goto": "n_rounds" },
+            { "t": "The back door was propped with a cigarette pack. Redro.", "req": "ev:e109", "goto": "n_back" },
+            { "t": "Something was blinking on the old terminal, wasn't it?", "req": "ev:e103", "goto": "n_404" },
+            { "t": "That's all for now.", "goto": "__end" }
+          ]
+        },
+        "n_rounds": {
+          "sp": "tomas", "t": "Locked the front at nine, sharp as church. Round of the building, cup of coffee, rounds again at ten. Nobody entered. Nobody. I'd swear it on my badge.",
+          "effects": ["cflag:c1_tomas_claim"],
+          "next": "start"
+        },
+        "n_back": {
+          "sp": "tomas", "t": "...That's mine. The pack's mine. I leave the bolt off for a smoke at ten, everyone knows, it's— eleven years and one night, that's all it takes to ruin a man, right?",
+          "effects": ["cflag:c1_tomas_back"],
+          "next": "start"
+        },
+        "n_404": {
+          "sp": "tomas", "t": "The old sync screen, yes. It kept flashing some error. 404, or something. I figured— a glitch, right? Old system. Glitches.",
+          "effects": ["cflag:c1_tomas_404"],
+          "next": "start"
+        }
+      }
+    },
+    "nina": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "nina", "t": "She was my friend. My neighbor. I'm not— I don't want to be in a report. Last time a witness got named, her windows got broken. Actual windows.",
+          "opts": [
+            { "t": "You were the last person she called. 20:41.", "req": "ev:e104", "goto": "n_call" },
+            { "t": "I can keep your name off the record if you talk to me now.", "goto": "n_kind" },
+            { "t": "You will talk, or you'll explain to a judge why you didn't.", "goto": "n_hard" },
+            { "t": "Take your time. I'll wait.", "goto": "n_wait" }
+          ]
+        },
+        "n_wait": {
+          "sp": "nina", "t": "...You're not like the last one. Okay. Okay, ask.",
+          "effects": ["rel:nina.trust+2", "cflag:c1_nina_warm"],
+          "goto": "n_call"
+        },
+        "n_kind": {
+          "sp": "nina", "t": "You can't promise that. Everyone promises that. ...But you asked before you threatened, so. Ask.",
+          "effects": ["rel:nina.trust+1"],
+          "goto": "n_call"
+        },
+        "n_hard": {
+          "sp": "nina", "t": "There it is. The threat. Fine — come back with a subpoena and I'll say the words I could have said for free.",
+          "effects": ["rel:nina.fear+3", "rel:nina.suspicion+2", "cflag:c1_nina_rude"],
+          "goto": "__end"
+        },
+        "n_call": {
+          "sp": "nina", "t": "At 20:41 she told me she'd found something that SHOULDN'T EXIST. A file. She said if anything happened to her, it wasn't an accident. Her phone buzzed twice while we talked — withheld number. Both times.",
+          "effects": ["ev:e105"],
+          "next": "n_call2"
+        },
+        "n_call2": {
+          "sp": "nina", "t": "I thought she was being dramatic. Helen wasn't dramatic. She alphabetized her spice rack. Please find who did this. Please don't say my name out loud when you do.",
+          "effects": ["remember-nina|Talked to the investigator about Helen's last call; asked to stay out of the record"],
+          "goto": "__end"
+        }
+      }
+    },
+    "bishop": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "bishop", "t": "A special investigator. In my annex. The county must really pay you by the question. Ask, then. I have an archive to run.",
+          "opts": [
+            { "t": "Where were you between six and midnight?", "goto": "n_alibi" },
+            { "t": "What can you tell me about file 2019-1183?", "goto": "n_file" },
+            { "t": "Helen flagged wrong dates on 1183 — signed with your countersign.", "req": "ev:e106", "goto": "n_dates" },
+            { "t": "Your badge cabinet — is the master admin badge ever out of it?", "req": "ev:e103", "goto": "n_badge" },
+            { "t": "That's all. For now.", "goto": "__end" }
+          ]
+        },
+        "n_alibi": {
+          "sp": "bishop", "t": "I left at six o'clock. Straight home. Dinner with my wife by nine — she'll confirm it, she confirms everything. I did not return to this building.",
+          "effects": ["cflag:c1_bishop_alibi"],
+          "next": "start"
+        },
+        "n_file": {
+          "sp": "bishop", "t": "Inspection sign-offs. 2019. Northbridge Logistics, warehouse permits. Dull as dishwater and twice as greasy. I sign what the county tells me to sign.",
+          "next": "start"
+        },
+        "n_dates": {
+          "sp": "bishop", "t": "Helen was thorough. That's why she was good at her job. She flagged everything — dates, margins, staple angles. It doesn't mean there was anything TO flag.",
+          "effects": ["rel:bishop.suspicion+2"],
+          "next": "start"
+        },
+        "n_badge": {
+          "sp": "bishop", "t": "The master badge sits in a locked cabinet in MY office. Cabinet's clean, log's clean. Unless you'd like to accuse my furniture.",
+          "effects": ["rel:bishop.suspicion+1"],
+          "next": "start"
+        }
+      }
+    },
+    "kessler": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "kessler", "t": "Special Investigator Carter. I'd say it's a pleasure, but we both bill by the hour. You found my name in a visitor log. Sit anyway.",
+          "opts": [
+            { "t": "You requested file 2019-1183 the day Helen Voss died.", "goto": "n_file" },
+            { "t": "Why does a private attorney want a county inspection file?", "goto": "n_why" },
+            { "t": "Where were you at 21:24?", "goto": "n_where" },
+            { "t": "Enjoy your evening, Mr. Kessler.", "goto": "__end" }
+          ]
+        },
+        "n_file": {
+          "sp": "kessler", "t": "I requested it. I was told it was missing. Fascinating, isn't it — a file that vanishes the day somebody dies. I do love this county. Everything here has a plot twist.",
+          "effects": ["rel:kessler.suspicion+1"],
+          "next": "start"
+        },
+        "n_why": {
+          "sp": "kessler", "t": "A client's due diligence. Which client is protected by the only privilege you can't break. You'll find, Investigator, that I'm a very lawful man. It's my favorite disguise.",
+          "next": "start"
+        },
+        "n_where": {
+          "sp": "kessler", "t": "At Aegis Tower, three miles away, signing things. My cameras are better than the county's. Check them — I insist.",
+          "next": "start"
+        }
+      }
+    }
+  },
+  "phases": [
+    {
+      "id": "p_intro", "type": "narrative",
+      "lines": [
+        { "sys": "MERIDIAN COUNTY — OCTOBER 5, 06:12", "t": "The night guard finds her at the end of the vault hallway. Helen Voss, nineteen years a records clerk, hanging from a maintenance bracket like a misfiled document." },
+        { "sys": "08:30 — DISTRICT ATTORNEY'S OFFICE", "t": "The county wants the word 'suicide' on the file by Friday. The DA's office wants to know why the vault is short exactly one file. Both requests land on your desk, because two days ago you graduated top of your cycle." },
+        { "sp": "emma", "t": "Prosecutor Emma Reed. I run the courtroom end of your cases — which means when you bring me evidence, I turn it into verdicts. Don't bring me guesses." },
+        { "sp": "emma", "t": "Helen Voss is dead. File 2019-1183 is missing from a locked vault. Coincidences are your department, Carter. Proof is mine." },
+        { "sp": "emma", "t": "Start at the annex. Then the precinct. Then anywhere the evidence drags you. When you can look me in the eye and name a person — we go to Judge Wilson." }
+      ],
+      "enterEffects": [
+        "obj:find|Find out what really happened to Helen Voss",
+        "obj:file|Trace file 2019-1183",
+        "msg:EMMA REED|The annex is yours until Friday. After that the county buries it. — E.R."
+      ],
+      "next": "p_hub"
+    },
+    {
+      "id": "p_hub", "type": "hub",
+      "title": "MERIDIAN COUNTY — DAY ONE",
+      "desc": "Where does the file lead?",
+      "options": [
+        { "label": "County Records Annex", "sub": "Where Helen died — and where the vault lies", "glyph": "▩", "goto": "p_annex", "flag": "annex" },
+        { "label": "Precinct 9 — Forensics", "sub": "Sarah Miller has the body's story", "glyph": "◉", "goto": "p_precinct", "flag": "precinct" },
+        { "label": "Precinct 9 — Interview Room", "sub": "Talk to the night guard, Tomas Verne", "glyph": "☰", "goto": "p_tomas", "flag": "tomas" },
+        { "label": "Marlow Street — Apartment 4C", "sub": "Helen's home. Her phone. Her bookshelf.", "glyph": "⌂", "goto": "p_apt", "flag": "apt" },
+        { "label": "Interview — Nina Park", "sub": "Helen's neighbor. The last call.", "glyph": "☰", "goto": "p_nina", "flag": "nina" },
+        { "label": "County Office — Alan Bishop", "sub": "Chief archivist. Helen's supervisor.", "glyph": "☰", "goto": "p_bishop_talk", "flag": "bishop" },
+        { "label": "Aegis Tower — Victor Kessler", "sub": "The lawyer who wanted the file", "glyph": "☰", "goto": "p_kessler_talk", "flag": "kessler", "req": "flag:c1_kessler" },
+        { "label": "Annex Parking Garage — B1", "sub": "Every car leaves a paper trail", "glyph": "◫", "goto": "p_garage", "flag": "garage" }
+      ],
+      "proceedReq": "ev:e103&ev:e110",
+      "proceedLabel": "CALL THE INQUEST ▸",
+      "proceedHint": "Emma needs two things before Judge Wilson will open an inquest: who could enter the vault that night, and whose alibi the evidence breaks.",
+      "proceedGoto": "p_confront"
+    },
+    {
+      "id": "p_annex", "type": "location", "loc": "annex", "title": "COUNTY RECORDS ANNEX",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "desk", "name": "FRONT DESK", "glyph": "desk",
+          "inspects": [
+            { "lines": [{ "t": "The visitor log, yesterday's page. At 16:40, one name in expensive handwriting: V. KESSLER, KESSLER & ASSOCIATES. Purpose of visit: records request — file 2019-1183. Denied: file missing." }, { "fx": "flash", "t": "New evidence: Visitor Pass — V. Kessler." }], "effects": ["ev:e108", "flag:c1_kessler", "cflag:c1_kessler_seen"] },
+            { "lines": [{ "t": "Helen's duty roster. Overtime, approved by A. Bishop. She was here alone with him three nights last week." }] }
+          ]
+        },
+        {
+          "id": "helendesk", "name": "HELEN'S DESK", "glyph": "desk2",
+          "inspects": [
+            { "lines": [{ "t": "Orderly. Pen tray aligned, blotter clean. Under a blank sheet, one memo in small disciplined print:" }, { "t": "'B — wrong dates on 1183. Must check the original. NOT the copy.'" }, { "fx": "flash", "t": "New evidence: Helen's Desk Note." }], "effects": ["ev:e106"] }
+          ]
+        },
+        {
+          "id": "vault", "name": "VAULT DOOR", "glyph": "vault",
+          "inspects": [
+            { "lines": [{ "t": "The paper register still hangs on its clipboard. Helen's signature, 19:12: FILE 2019-1183 — checked out to her desk, per procedure." }, { "t": "The next page has been torn out at the spine. Carefully. Whoever tore it does not rush." }, { "fx": "flash", "t": "New evidence: Vault Registry (Paper)." }], "effects": ["ev:e102"] }
+          ]
+        },
+        {
+          "id": "server", "name": "SERVER CABINET", "glyph": "terminal",
+          "inspects": [
+            { "lines": [{ "t": "The access log prints its history like a confession. 21:24 — VAULT DOOR, FRONT. BADGE #0451. The master admin badge, signed out to nobody." }, { "t": "Six minutes before, the same log prints a line the guard calls a glitch: ARCHIVE SYNC ERROR 404." }, { "fx": "flash", "t": "New evidence: Digital Access Log." }, { "sys": "NOTE", "t": "404. You file the number away. It files itself away too." }], "effects": ["ev:e103", "board:mystery:m404|ERROR 404", "board:link:m404|c1|SYNC ERROR — OCT 4"] }
+          ]
+        },
+        {
+          "id": "camera", "name": "HALLWAY CAMERA", "glyph": "camera",
+          "inspects": [
+            { "lines": [{ "t": "The camera above the vault hallway recorded eleven good hours of yesterday — except 20:50 to 21:30. The gap isn't damage. It's an admin override, issued from the ADMIN OFFICE terminal on October 2." }, { "t": "Someone scheduled darkness two days in advance." }, { "fx": "flash", "t": "New evidence: CCTV Maintenance Order." }], "effects": ["ev:e107"] }
+          ]
+        },
+        {
+          "id": "backdoor", "name": "BACK DOOR", "glyph": "backdoor",
+          "inspects": [
+            { "lines": [{ "t": "Propped open with a pack of REDRO cigarettes. No dust in the frame — this door swings often, whatever the guard's affidavit says." }, { "fx": "flash", "t": "New evidence: Back Door Photograph." }], "effects": ["ev:e109"] }
+          ]
+        },
+        {
+          "id": "bracket", "name": "VAULT HALLWAY", "glyph": "door",
+          "inspects": [
+            { "lines": [{ "t": "The maintenance bracket. A thin cord and a wider strap, both still in place, both touched by the county photographer's gloves and nobody else's since." }, { "t": "Two widths. You didn't need forensics to see it. But you're glad forensics agrees." }] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_precinct", "type": "location", "loc": "precinct", "title": "PRECINCT 9 — FORENSICS",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "bay", "name": "AUTOPSY BAY", "glyph": "case",
+          "inspects": [
+            { "lines": [{ "t": "Sarah Miller's report is open on the lightbox, two words circled: STAGED. HOMICIDE. The full file is hers to hand over — and she'll want to do it in person." }] }
+          ]
+        },
+        {
+          "id": "intake", "name": "EVIDENCE INTAKE", "glyph": "box",
+          "inspects": [
+            { "lines": [{ "t": "The intake ledger for the Voss case: body photos, ligatures, one cigarette pack (logged — from YOUR back-door photograph, moved fast). Everything signed, everything present." }, { "t": "A note in the margin in someone else's hand: 'chain of custody — watch this one.'" }] }
+          ]
+        },
+        {
+          "id": "sergeant", "name": "SERGEANT'S DESK", "glyph": "desk",
+          "inspects": [
+            { "lines": [{ "t": "Detective Marcus Miller — Sarah's brother — flagged the missing file before the county did. He left you a copy of the vault registry page and a sticky note: 'records cases spook people. watch yourself.'" }, { "t": "You've been a special investigator for two days. Someone senior is watching out for you." }], "effects": ["rel:marcus.trust+1", "remember-marcus|Flagged the missing file first; handed the registry copy to the new investigator"] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_sarah", "type": "dialogue", "npc": "sarah", "next": "p_hub"
+    },
+    { "id": "p_tomas", "type": "dialogue", "npc": "tomas", "next": "p_hub" },
+    {
+      "id": "p_apt", "type": "location", "loc": "apt", "title": "APARTMENT 4C — HELEN VOSS",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "phone", "name": "HER PHONE", "glyph": "phone",
+          "inspects": [
+            { "lines": [{ "t": "Six missed calls, one number, withheld. Between 18:00 and 20:30 — each call longer than the last, like a hand tightening." }, { "fx": "flash", "t": "New evidence: Helen's Phone Records." }], "effects": ["ev:e104"] }
+          ]
+        },
+        {
+          "id": "shelf", "name": "BOOKSHELF", "glyph": "shelf",
+          "inspects": [
+            { "lines": [{ "t": "Detective novels, spines cracked with honest use. Arranged alphabetically. Except one book sits upside down, tucked behind the others." }] },
+            { "lines": [{ "t": "A hollow. Inside: one sheet, her handwriting. 'If something happens to me — 1183 wasn't the only one. Check the fire.'" }, { "fx": "flash", "t": "Hidden evidence: Hidden Note — Hollow Book." }, { "sys": "NOTE", "t": "The fire. You've read county records your whole life. You know exactly one fire that ate archives." }], "effects": ["ev:e111", "note:The fire. 1183 wasn't the only one. — Helen's hidden note"] }
+          ]
+        },
+        {
+          "id": "mail", "name": "MAIL TRAY", "glyph": "notice",
+          "inspects": [
+            { "lines": [{ "t": "Bills, a library reminder, and a county notice: RECORDS ANNEX FUNDING — RENEWAL PENDING. Somebody in that building controls whether this place survives the year." }] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    { "id": "p_nina", "type": "dialogue", "npc": "nina", "next": "p_hub" },
+    { "id": "p_bishop_talk", "type": "dialogue", "npc": "bishop", "next": "p_hub" },
+    { "id": "p_kessler_talk", "type": "dialogue", "npc": "kessler", "next": "p_hub" },
+    {
+      "id": "p_garage", "type": "location", "loc": "garage", "title": "ANNEX PARKING GARAGE — LEVEL B1",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "exit", "name": "EXIT TERMINAL", "glyph": "ticket",
+          "inspects": [
+            { "lines": [{ "t": "The automated exit log doesn't take sides. It just remembers. 20:52 — VEHICLE BX-4077, PAID EXIT, LEVEL B1." }, { "t": "BX-4077. Registered to ALAN BISHOP, Chief Archivist." }, { "fx": "flash", "t": "New evidence: Garage Exit Ticket." }], "effects": ["ev:e110"] }
+          ]
+        },
+        {
+          "id": "booth", "name": "SECURITY BOOTH", "glyph": "booth",
+          "inspects": [
+            { "lines": [{ "t": "The booth log, October 2: 'camera maintenance scheduled per admin office — hallway unit, Oct 4, 20:50–21:30.' The admin office. Again." }] }
+          ]
+        },
+        {
+          "id": "space", "name": "ADMIN SPACE #3", "glyph": "car",
+          "inspects": [
+            { "lines": [{ "t": "Reserved. A. BISHOP, painted on the barrier in county gray. Empty now, of course. Cars are honest only when they're still parked." }] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_confront", "type": "present",
+      "prompt": "Bishop's alibi is a story. Present the evidence that breaks it.",
+      "sp": "bishop",
+      "statement": "I left at six o'clock. Straight home. Dinner with my wife by nine. I did not return to this building.",
+      "correct": "e110",
+      "wrong": [
+        { "sp": "emma", "t": "That doesn't touch his claim, Carter. He says he never came back. Find something with a timestamp." }
+      ],
+      "break": [
+        { "fx": "flash", "t": "You lay the exit ticket beside his statement. BX-4077. 20:52." },
+        { "sp": "bishop", "t": "...I came back. For a coat. Twenty to nine. The vault was locked, I had a coat check, I— I never went near the vault." },
+        { "sp": "emma", "t": "So the story moves. Good. Stories that move can be pushed. Inquest, Carter. Now." }
+      ],
+      "effects": ["cflag:c1_bishop_broke", "objdone:find"],
+      "next": "p_inquest"
+    },
+    {
+      "id": "p_inquest", "type": "decision",
+      "tag": "ON THE RECORD",
+      "prompt": "Judge Wilson takes the bench at nine. Emma, on the record: 'Who do we bring before the court?'",
+      "options": [
+        {
+          "label": "Alan Bishop — Chief Archivist",
+          "desc": "Master badge, camera override, the exit ticket, Helen's note. The story that moves.",
+          "effects": ["choice:c1_accuse|Brought Alan Bishop before Judge Wilson"],
+          "goto": "p_court"
+        },
+        {
+          "label": "Tomas Verne — Night Guard",
+          "desc": "He lied about the back door. Liars are not always killers — but the court needs a body in the dock.",
+          "effects": ["choice:c1_accuse|Brought Tomas Verne before Judge Wilson", "flag:c1_wrong"],
+          "goto": "p_court_wrong"
+        },
+        {
+          "label": "No one. Request more time.",
+          "desc": "Emma warned you: after Friday, the county buries this file.",
+          "effects": ["choice:c1_accuse|Requested further investigation", "flag:c1_fled"],
+          "goto": "p_delay"
+        }
+      ]
+    },
+    {
+      "id": "p_court", "type": "courtroom",
+      "room": "COURTROOM 3",
+      "next": "p_after",
+      "enterEffects": ["objdone:find", "music:court"],
+      "script": [
+        { "seg": "line", "sfx": "gavel", "sp": "judge", "t": "Inquest into the death of Helen Voss. The state is represented by Prosecutor Reed. The special investigator will conduct. Sit." },
+        { "seg": "line", "sp": "emma", "t": "Your Honor. The state will show the decedent was murdered during an organized attempt to conceal records tampering. We begin with the last uniformed witness." },
+        {
+          "seg": "testimony", "title": "WITNESS TESTIMONY", "witness": "tomas",
+          "statements": [
+            {
+              "id": "s1", "t": "I locked the annex at nine sharp. Front and back. Like church.",
+              "weak": true, "breakWith": "e103",
+              "press": [{ "q": "Nine sharp. What about the vault door specifically?", "a": "Front gate and vault. Both. I do the doors in order, coffee after." }],
+              "break": [
+                { "fx": "flash", "t": "You present the digital log. 21:24 — VAULT DOOR, FRONT. BADGE #0451." },
+                { "sp": "tomas", "t": "Twenty-four past nine? That's— that's my coffee. Somebody badged into the vault? Nobody badged— that badge isn't even MINE, that's the master—" },
+                { "sp": "judge", "t": "The witness will compose himself. Continue." }
+              ]
+            },
+            {
+              "id": "s2", "t": "And nobody entered after that. Nobody. I'd swear it on my badge.",
+              "weak": true, "breakWith": "e109",
+              "press": [{ "q": "Every door? You're certain?", "a": "Every— the ones I lock. Which is all the ones that matter." }],
+              "break": [
+                { "fx": "flash", "t": "You present the back door photograph. The Redro pack. No dust in the frame." },
+                { "sp": "tomas", "t": "The back door... that's my smoke break, I leave the bolt off at ten, everyone knows— anyone could've... eleven years. Anyone could've." },
+                { "sp": "judge", "t": "So the record will show: the annex had an open door and a blind camera. Anything else?" }
+              ]
+            },
+            {
+              "id": "s3", "t": "I check everything twice. Nothing was wrong in that building.",
+              "weak": false,
+              "press": [{ "q": "You saw the sync terminal flash an error that night. What did it say?", "a": "Some number. 404. I figured old system, old ghosts." }]
+            }
+          ],
+          "endLines": [{ "sp": "judge", "t": "The witness will step down and surrender his lighter. Next." }]
+        },
+        { "seg": "line", "sp": "emma", "t": "The state now calls the person who had the keys to the darkness: the Chief Archivist." },
+        {
+          "seg": "testimony", "title": "CROSS-EXAMINATION", "witness": "bishop",
+          "statements": [
+            {
+              "id": "b1", "t": "I left the annex at six o'clock and went straight home.",
+              "weak": true, "breakWith": "e110",
+              "press": [{ "q": "Straight home. No stops?", "a": "I am fifty-eight years old. My stops are private." }],
+              "break": [
+                { "fx": "flash", "t": "You present the garage exit ticket. BX-4077. 20:52." },
+                { "sp": "bishop", "t": "...I returned. For a coat. I never went near the vault. My badge never left the—" },
+                { "sp": "judge", "t": "The master badge, Mr. Bishop. The one that lives in a locked cabinet. In your office." }
+              ]
+            },
+            {
+              "id": "b2", "t": "Helen Voss was a valued colleague. I had no reason to harm her.",
+              "weak": true, "breakWith": "e106",
+              "press": [{ "q": "Valued enough to approve her overtime. Why?", "a": "Because the archive was behind schedule. There is a schedule." }],
+              "break": [
+                { "fx": "flash", "t": "You present Helen's desk note. 'B — wrong dates on 1183. Must check the original.'" },
+                { "sp": "bishop", "t": "That proves NOTHING! She wrote B's on everything— memos, margins— you cannot take a memo and make it a motive!" },
+                { "sp": "judge", "t": "The court notes the witness's volume. Quietly, counselor." }
+              ]
+            },
+            {
+              "id": "b3", "t": "Twenty-two years I have run these records. My countersign is on half the county's paper.",
+              "weak": false,
+              "press": [{ "q": "Including the Northbridge sign-offs Helen flagged.", "a": "The county tells me what to sign. I am a pen, Investigator. Pens don't murder." }]
+            }
+          ],
+          "endLines": [{ "sp": "judge", "t": "The witness will remain. Prosecutor Reed — the state's position." }]
+        },
+        {
+          "seg": "choice", "tag": "PRESS THE BREAK", "prompt": "Bishop's story is moving on its own now. Emma, quietly: 'Your call, Carter. How hard do we push?'",
+          "options": [
+            {
+              "label": "Present the full chain — override, badge, ticket, note",
+              "cls": "btn-primary",
+              "req": "ev:e107",
+              "choice": "c1_court",
+              "result": [
+                { "sp": "james", "t": "October 2: a camera is scheduled blind from the admin office. October 4: the master badge opens the vault at 21:24. 20:52: the Chief Archivist's car leaves a garage he was never in. And a clerk who wrote 'wrong dates on 1183' dies holding the file." },
+                { "fx": "flash", "sp": "emma", "t": "The state offers the chain as one act, Your Honor. Not a story. A machine." },
+                { "sp": "bishop", "t": "...She was going to check the ORIGINAL. Do you understand? Twenty-two years, and she was going to check the original. I only meant to take the file. She was already there. She was already—" },
+                { "sp": "judge", "t": "Bailiffs. Mr. Bishop — you will finish that sentence in writing, and you will sign it." }
+              ],
+              "effects": ["flag:c1_confession", "flag:c1_file_recovered", "objdone:file", "rel:emma.respect+3", "rel:sarah.trust+2", "rel:wilson.respect+2"]
+            },
+            {
+              "label": "Accept the amended plea — obstruction and tampering",
+              "choice": "c1_court",
+              "result": [
+                { "sp": "emma", "t": "The state will take the conviction it can carry, Your Honor. Obstruction, records tampering. The murder charge... waits." },
+                { "sp": "judge", "t": "Seven years. The file remains missing, and the court's patience with this county is not what it was." },
+                { "sp": "bishop", "t": "(quietly, to no one) She was going to check the original." }
+              ],
+              "effects": ["flag:c1_plea", "rel:emma.respect+1"]
+            }
+          ]
+        },
+        { "seg": "line", "sfx": "gavel", "sp": "judge", "t": "This court finds Alan Bishop in contempt of everything he was hired to protect. Adjourned." }
+      ]
+    },
+    {
+      "id": "p_court_wrong", "type": "narrative",
+      "next": "p_after",
+      "enterEffects": ["objdone:find"],
+      "lines": [
+        { "sys": "COURTROOM 3 — 09:00", "t": "You put Tomas Verne before Judge Wilson. It goes the way liars' cases go when the evidence disagrees with the theory." },
+        { "sp": "judge", "t": "The badge in the log is #0451. The master. This man's badge is #0221, and it never left his chest. Counsel — the court does not hang a door on the wrong hinge." },
+        { "sp": "emma", "t": "(outside, quietly) You had the master badge, the override, the ticket — and you brought me the guard. Bishop's lawyer had him resign by lunch. He's gone, Carter. The file goes where he goes." },
+        { "sp": "tomas", "t": "(at the courthouse steps) Eleven years. I'll remember this. You want to know what I remember? Ask me again someday, Investigator. Maybe I'll be in the mood to be honest." },
+        { "fx": "flash", "t": "CASE 001 — the wrong hinge. The county's version — 'suicide' — ships on Friday after all." }
+      ]
+    },
+    {
+      "id": "p_delay", "type": "narrative",
+      "next": "p_after",
+      "enterEffects": ["objdone:find"],
+      "lines": [
+        { "sp": "emma", "t": "More time. Fine. I'll hold Wilson's clerk off with procedure and prayers." },
+        { "sys": "THURSDAY — 07:40", "t": "You arrive to find Bishop's office cleared. Resignation letter, effective immediately. No forwarding address. The master badge sits in its cabinet, wiped clean of prints." },
+        { "sp": "sarah", "t": "He ran. People run from fires, James. They don't run from suicide verdicts." },
+        { "fx": "flash", "t": "CASE 001 — delayed. Alan Bishop is somewhere with a lawyer, and file 2019-1183 is with them." }
+      ]
+    },
+    {
+      "id": "p_after", "type": "narrative",
+      "next": "p_threat",
+      "enterEffectsReq": [
+        { "req": "flag:c1_file_recovered", "effects": ["ev:e1183", "ev:e404stub", "board:org:northbridge|NORTHBRIDGE LOGISTICS", "board:link:northbridge|c1|FILE 1183", "objdone:file"] },
+        { "req": "flag:c1_confession", "effects": ["board:link:bishop|c1|CONVICTED"] },
+        { "req": "flag:c1_fled", "effects": ["board:link:bishop|c1|FLED"] },
+        { "req": "flag:c1_wrong", "effects": ["board:link:bishop|c1|RESIGNED"] }
+      ],
+      "lines": [
+        { "req": "flag:c1_file_recovered", "sys": "OCTOBER 6 — PRECINCT 9, LATE", "t": "The annex vault, opened under court order. The recovery team pulls file 2019-1183 from behind a decade of legitimate paper." },
+        { "req": "!flag:c1_file_recovered", "sys": "OCTOBER 6 — PRECINCT 9, LATE", "t": "The vault sits open under court order. The space where file 2019-1183 lived is holding nothing but the smell of old paper. The file is with a man who knows how to disappear." },
+        { "req": "flag:c1_file_recovered", "sp": "emma", "t": "Inspection sign-offs for Northbridge Logistics. Three dates altered to pass a failed inspection — countersigned by our friend the pen. This isn't a file, Carter. It's a thread. Pull it." },
+        { "req": "!flag:c1_file_recovered", "sp": "sarah", "t": "No file. Whatever was in 1183, somebody wanted it gone badly enough to kill for it. That's not a clerk's crime, James. That's an institution's." },
+        { "req": "flag:c1_file_recovered", "sp": "sarah", "t": "And one more thing. The page torn from the vault registry — I recovered the stub from the binding. The missing entry above Helen's checkout." },
+        { "req": "flag:c1_file_recovered", "sp": "sarah", "t": "The stub shows the tail of a case number. Just the digits: ...404. Same as the sync error. I checked twice. It's not a glitch." },
+        { "req": "flag:c1_file_recovered", "fx": "flash", "t": "New evidence: Vault Registry — Torn Stub." }
+      ]
+    },
+    {
+      "id": "p_threat", "type": "phone",
+      "from": "UNKNOWN",
+      "text": "The file is closed. Leave it closed.",
+      "actions": [
+        { "label": "REPLY", "effects": ["note:You replied to the unknown number. It replied back."], "response": "Delete this case from your mind. This is the only courtesy you will receive." },
+        { "label": "TRACE", "effects": ["note:Trace attempt: signal bounced across three towers. Last tower: Docks exchange. Then nothing.", "cflag:c1_tried_trace"], "response": "Curious. You were warned instead of arranged. Enjoy the head start." },
+        { "label": "SAVE", "effects": ["ev:e_thr1", "note:Threat message #1 preserved in evidence."], "response": null },
+        { "label": "IGNORE", "effects": ["note:You ignored the message. It did not ignore you."], "response": null },
+        { "label": "DELETE", "effects": ["cflag:c1_deleted_msg", "note:You deleted the message. Evidence, deleted. Remember that choice."], "response": null }
+      ],
+      "enterEffects": ["threat:1"]
+    },
+    {
+      "id": "p_epilogue", "type": "epilogue",
+      "nextCase": 2,
+      "outcomeReq": [
+        { "req": "flag:c1_confession", "outcome": "strong" },
+        { "req": "flag:c1_plea", "outcome": "partial" },
+        { "req": "flag:c1_wrong", "outcome": "failed" },
+        { "req": "flag:c1_fled", "outcome": "delayed" }
+      ],
+      "completeEffects": [
+        "unlock:2",
+        "board:link:helen|c1|VICTIM",
+        "board:link:kessler|c1|REQUESTED 1183",
+        "rel:emma.trust+2",
+        "remember-emma|Backed the new investigator's first inquest",
+        "remember-kessler|The new investigator read the visitor log and sat down across from him",
+        "obj:file|Trace file 2019-1183",
+        "msg:SARAH MILLER|Get some sleep, James. Tomorrow the city gets real. — S."
+      ],
+      "lines": [
+        { "sys": "CASE 001 — STATUS: CLOSED (FOR NOW)", "t": "A clerk is dead. A killer is answered for — or not. A file named 1183 leads to a company called Northbridge. And somewhere in a county server, an error keeps repeating three digits that should not mean anything." },
+        { "sys": "UNKNOWN NUMBER", "t": "The file is closed. Leave it closed." },
+        { "sys": "JAMES CARTER — PERSONAL NOTE", "t": "Note to self: the deeper I dig, the more this digs back." }
+      ]
+    }
+  ]
+}

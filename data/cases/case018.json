@@ -1,0 +1,42 @@
+{
+  "caseId": 18,
+  "code": "CASE 018",
+  "title": "Cold Coffee",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "Sarah is afraid of something she will not name. Marcus's fate surfaces. And the Records Annex you thought you knew becomes a trap with you inside.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "Sarah's secret strains",
+      "Marcus's fate",
+      "annex trap (action escape)",
+      "warn-Sarah decision (feeds 021)"
+    ],
+    "connections": [
+      "009",
+      "021"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [
+    {
+      "level": 7,
+      "case": 18,
+      "event": "Direct attack / trapped in the Records Annex (action gameplay)."
+    }
+  ],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

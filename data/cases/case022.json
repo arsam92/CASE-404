@@ -1,0 +1,37 @@
+{
+  "caseId": 22,
+  "code": "CASE 022",
+  "title": "FILE 404",
+  "status": "development",
+  "ambient": "investigate",
+  "brief": "2004. Detective Robert Carter found the Registry's founding erasure. They framed him, burned the archive, and deleted his name. The file was never lost. It was waiting.",
+  "objectives": [],
+  "startPhase": null,
+  "hook": {
+    "plants": [
+      "2004 CASE 404 fully reconstructed",
+      "Robert Carter's framing",
+      "Hayes's warning explained",
+      "Wilson's docket"
+    ],
+    "connections": [
+      "011",
+      "013",
+      "023"
+    ],
+    "crimes": []
+  },
+  "threatEvents": [],
+  "phases": [],
+  "evidence": [],
+  "dialogues": {},
+  "template": {
+    "schema": "case-404/1",
+    "howToExpand": [
+      "Set startPhase to the first phase id.",
+      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
+      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
+      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
+    ]
+  }
+}

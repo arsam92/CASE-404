@@ -1,0 +1,374 @@
+{
+  "caseId": 0,
+  "code": "CASE 000",
+  "title": "The Lesson",
+  "ambient": "calm",
+  "brief": "Meridian Investigative Academy, final examination. The honor medal has been stolen from the display case in the east lounge. Three people had access. Your task is not to guess — it is to prove. Instructor M. Hayes is observing.",
+  "objectives": ["Identify who took the honor medal — with evidence, not instinct"],
+  "startPhase": "p_intro",
+  "entryEffects": [
+    "board:person:james|JAMES CARTER",
+    "board:person:hayes|INSTRUCTOR HAYES",
+    "board:case:c0|CASE 000",
+    "board:link:james|hayes|TRAINEE",
+    "board:link:c0|james|ASSIGNED"
+  ],
+  "evidence": [
+    {
+      "id": "e_lock", "label": "T-01", "name": "Broken Display Lock",
+      "importance": "key",
+      "source": "Display case, east lounge",
+      "time": "Evening, exam day",
+      "location": "Academy — East Lounge",
+      "related": "Unknown perpetrator",
+      "desc": "The brass lock was pried with a flat tool — from the inside of the wing, cleanly. No scratches from the corridor side. Whoever opened it stood here calmly, and knew the camera above the case does not record.",
+      "interp": ["Not a break-in. Someone with routine access.", "The tool was small. A knife, a ruler, a cleanup scraper."]
+    },
+    {
+      "id": "e_box", "label": "T-02", "name": "Empty Medal Box",
+      "importance": "important",
+      "source": "Display case, east lounge",
+      "time": "Evening, exam day",
+      "location": "Academy — East Lounge",
+      "desc": "The velvet lining is empty. The box was set back straight, aligned with the shelf edge. Nobody steals in a hurry and then straightens the box.",
+      "interp": ["The thief wanted the theft noticed late — tomorrow, ideally.", "Respect for the case suggests familiarity, not malice."]
+    },
+    {
+      "id": "e_print", "label": "T-03", "name": "Muddy Boot Print",
+      "importance": "key",
+      "source": "Floor beneath the window, east lounge",
+      "time": "Evening, exam day",
+      "location": "Academy — East Lounge",
+      "desc": "A single boot print in dried flower-bed soil. Cleat pattern — athletic tread. Size 44. Someone crossed the flower beds and came in through the gym corridor, not the main doors.",
+      "interp": ["Matches training cleats issued to academy athletes.", "The route avoids the main corridor camera."]
+    },
+    {
+      "id": "e_window", "label": "T-04", "name": "Latched Window",
+      "importance": "optional",
+      "source": "East lounge window",
+      "time": "Evening, exam day",
+      "location": "Academy — East Lounge",
+      "desc": "Locked from the inside. The dust on the sill is undisturbed. Nobody came in or out through the window.",
+      "interp": ["Rules out an outsider. Whoever did this was already inside the wing."]
+    },
+    {
+      "id": "e_sched", "label": "T-05", "name": "Exam Schedule",
+      "importance": "important",
+      "source": "Notice board, east wing",
+      "time": "Exam day",
+      "location": "Academy — East Wing",
+      "desc": "Evening physical assessment in the gym until 20:00. East lounge closed to trainees after 18:00. Only staff, aides and examiners listed for the lounge after six.",
+      "interp": ["Trainees were supposed to be elsewhere — but were they?", "The lounge was technically empty and supervised by nobody."]
+    },
+    {
+      "id": "e_env", "label": "T-06", "name": "Torn Envelope",
+      "importance": "optional",
+      "source": "Waste bin, east lounge",
+      "time": "Exam day",
+      "location": "Academy — East Lounge",
+      "hidden": true,
+      "desc": "A torn academy envelope, addressed to D. FOX. Inside: a final warning notice. One more incident and Daniel Fox is expelled.",
+      "interp": ["Daniel Fox had a reason to be desperate this week.", "Desperation is a motive — it is still not proof."]
+    },
+    {
+      "id": "e_sheet", "label": "T-07", "name": "Gym Attendance Sheet",
+      "importance": "key",
+      "source": "Gym office, sign-out ledger",
+      "time": "Exam day, evening",
+      "location": "Academy — Gym",
+      "desc": "The evening assessment roster. DANIEL FOX signed out at 18:50 — over an hour before the gym session ended. Nobody signed him back in.",
+      "interp": ["Fox was unaccounted for between 18:50 and the end of the session.", "This contradicts any claim of being 'in the gym all evening'."]
+    }
+  ],
+  "dialogues": {
+    "gus": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "gus", "t": "Forty years I've kept this place standing. Forty. And in one evening somebody makes a liar out of me.",
+          "opts": [
+            { "t": "Tell me about the display case.", "goto": "n_case" },
+            { "t": "Did anyone come through here this evening?", "goto": "n_ppl" },
+            { "t": "Who has access to this wing?", "goto": "n_keys" },
+            { "t": "Thank you, Mr. Bloom.", "goto": "__end" }
+          ]
+        },
+        "n_case": {
+          "sp": "gus", "t": "I polished it at six sharp, like every day. Lock was fine. Medal was sitting straight in its box. Everything was fine.",
+          "next": "start"
+        },
+        "n_ppl": {
+          "sp": "gus", "t": "The evening class cleared out by eight. After that, nobody came through. Just me and the radiators.",
+          "effects": ["cflag:c0_gus_ppl"],
+          "next": "start"
+        },
+        "n_keys": {
+          "sp": "gus", "t": "Staff, the examiner's aides, and the instructors. Trainees steal keys when we're careless — I count mine twice a day.",
+          "next": "start"
+        }
+      }
+    },
+    "priya": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "priya", "t": "I was collating exam papers in the records room. I didn't see anything. I was careful. I'm always careful.",
+          "opts": [
+            { "t": "You seem nervous.", "goto": "n_nerv" },
+            { "t": "Did you pass through the east wing this evening?", "goto": "n_saw" },
+            { "t": "That's all. Thank you.", "goto": "__end" }
+          ]
+        },
+        "n_nerv": {
+          "sp": "priya", "t": "It's my first exam cycle. If something went wrong on my watch, Instructor Hayes will— can we please just get to the point?",
+          "effects": ["rel:priya.fear+2"],
+          "next": "start"
+        },
+        "n_saw": {
+          "sp": "priya", "t": "Around seven I passed Daniel Fox in the corridor by the gym. He said he was heading back to the gym. That's all I know. Please don't involve me in this.",
+          "effects": ["cflag:c0_saw", "rel:priya.trust+1"],
+          "next": "start"
+        }
+      }
+    },
+    "daniel": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "daniel", "t": "So you're the one they sent. Great. The screw-up sends the other screw-up.",
+          "opts": [
+            { "t": "Where were you this evening?", "goto": "n_gym" },
+            { "t": "You knew the medal was due back in the vault tonight.", "goto": "n_knew" },
+            { "t": "Fine. Routine questions. That's all.", "goto": "__end" }
+          ]
+        },
+        "n_gym": {
+          "sp": "daniel", "t": "In the gym. All evening. Until nine. Ask anyone — ask the roster, I don't care.",
+          "effects": ["cflag:c0_daniel_claim"],
+          "next": "start"
+        },
+        "n_knew": {
+          "sp": "daniel", "t": "Everyone knew. The honor medal goes back to the vault tonight, big ceremony tomorrow, Hayes gives his little speech. So what?",
+          "next": "start"
+        }
+      }
+    }
+  },
+  "phases": [
+    {
+      "id": "p_intro", "type": "narrative",
+      "lines": [
+        { "sys": "MERIDIAN INVESTIGATIVE ACADEMY — FINAL EXAMINATION", "t": "WELCOME, INVESTIGATOR." },
+        { "sp": "hayes", "t": "Sit. Don't fidget. You passed every written test they threw at you, so today we find out if any of it stuck." },
+        { "sp": "hayes", "t": "The honor medal was stolen from the display case in the east lounge this evening. Three people had routine access. One of them took it." },
+        { "sp": "hayes", "t": "Rule one. EVIDENCE does not prove guilt. A broken lock proves a broken lock. You will be tempted to treat clues like verdicts. Don't." },
+        { "sp": "hayes", "t": "Rule two. TESTIMONY is not truth. People lie, forget, or hide things. Sometimes all three in one sentence." },
+        { "sp": "hayes", "t": "Which is why rule three exists. When a statement and the evidence disagree — you have found a CONTRADICTION. Present the evidence that breaks the story. That is the whole job." },
+        { "sp": "hayes", "t": "Inspect the lounge. Talk to the three candidates. Compare what they say against what you hold in your hands. CONTEXT decides what a clue means — a footprint is a footprint until you learn who owns the boots." },
+        { "sp": "hayes", "t": "And rule four: your DECISIONS follow you out of this building. Solve it. I'll be watching." },
+        { "t": "The east wing smells of floor wax and old paper. The display case stands open like a pulled tooth." }
+      ],
+      "enterEffects": ["obj:tut|Identify who took the honor medal", "sfx:door"],
+      "next": "p_hub"
+    },
+    {
+      "id": "p_hub", "type": "hub",
+      "title": "ACADEMY — EXAM FLOOR",
+      "desc": "Where to, Investigator?",
+      "options": [
+        { "label": "East Lounge — the scene", "sub": "Inspect the display case and everything around it", "glyph": "◫", "goto": "p_lounge", "flag": "lounge" },
+        { "label": "Gym Office", "sub": "The evening class was held here", "glyph": "▤", "goto": "p_gym", "flag": "gym" },
+        { "label": "Talk — Gus Bloom", "sub": "Caretaker. Polishes the case every day at six.", "glyph": "☰", "goto": "p_talk_gus", "flag": "gus" },
+        { "label": "Talk — Priya Nair", "sub": "Examiner's aide. Nervous by nature.", "glyph": "☰", "goto": "p_talk_priya", "flag": "priya" },
+        { "label": "Talk — Daniel Fox", "sub": "Fellow trainee. Not your biggest fan.", "glyph": "☰", "goto": "p_talk_daniel", "flag": "daniel" }
+      ],
+      "proceedReq": "ev:e_sheet&ev:e_print",
+      "proceedLabel": "GO TO HAYES ▸",
+      "proceedHint": "Hayes expects more than suspicion. Find something that breaks a story: a claim the evidence can destroy.",
+      "proceedGoto": "p_confront"
+    },
+    {
+      "id": "p_lounge", "type": "location", "loc": "lounge", "title": "EAST LOUNGE — THE SCENE",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "case", "name": "DISPLAY CASE", "glyph": "case",
+          "inspects": [
+            { "lines": [{ "t": "The brass lock has been pried with a flat tool. The scratches run inward — the work was done from inside the wing, calmly." }, { "fx": "flash", "t": "New evidence: Broken Display Lock." }], "effects": ["ev:e_lock"] },
+            { "lines": [{ "t": "You check the shelf above: the security camera there has been dead for a month. Its maintenance tag was never countersigned." }] }
+          ]
+        },
+        {
+          "id": "box", "name": "MEDAL BOX", "glyph": "box",
+          "inspects": [
+            { "lines": [{ "t": "Velvet lining, empty. The box was set back perfectly straight, aligned with the shelf edge." }, { "fx": "flash", "t": "New evidence: Empty Medal Box." }], "effects": ["ev:e_box"] }
+          ]
+        },
+        {
+          "id": "floor", "name": "FLOOR BY THE WINDOW", "glyph": "print",
+          "inspects": [
+            { "lines": [{ "t": "Dried soil, flower-bed dirt. One boot print, cleat tread, size 44. It stops just short of the display case." }, { "fx": "flash", "t": "New evidence: Muddy Boot Print." }], "effects": ["ev:e_print"] }
+          ]
+        },
+        {
+          "id": "window", "name": "WINDOW", "glyph": "window",
+          "inspects": [
+            { "lines": [{ "t": "Latched from the inside. The dust on the sill is a flat, unbroken sheet. No entry. No exit." }, { "fx": "flash", "t": "New evidence: Latched Window." }], "effects": ["ev:e_window"] }
+          ]
+        },
+        {
+          "id": "notice", "name": "NOTICE BOARD", "glyph": "notice",
+          "inspects": [
+            { "lines": [{ "t": "The exam schedule: evening assessment in the gym until 20:00. The east lounge closed to trainees after 18:00." }, { "fx": "flash", "t": "New evidence: Exam Schedule." }], "effects": ["ev:e_sched"] }
+          ]
+        },
+        {
+          "id": "trash", "name": "WASTE BIN", "glyph": "trash",
+          "inspects": [
+            { "lines": [{ "t": "Coffee cups, paper towels... and a torn envelope addressed to D. FOX. Inside, a final warning notice. One more incident and he's expelled." }, { "fx": "flash", "t": "Hidden evidence: Torn Envelope." }], "effects": ["ev:e_env"] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_gym", "type": "location", "loc": "gym", "title": "GYM OFFICE",
+      "subtitle": "TAP OBJECTS TO INSPECT",
+      "hotspots": [
+        {
+          "id": "sheet", "name": "SIGN-OUT LEDGER", "glyph": "sheet",
+          "inspects": [
+            { "lines": [{ "t": "The evening roster. Most names sign out at 20:00 with the final whistle." }, { "t": "One line is different. DANIEL FOX — signed out 18:50. Nobody signed him back in." }, { "fx": "flash", "t": "New evidence: Gym Attendance Sheet." }], "effects": ["ev:e_sheet"] }
+          ]
+        },
+        {
+          "id": "bag", "name": "TRAINING BAG RACK", "glyph": "bag",
+          "inspects": [
+            { "lines": [{ "t": "Cleats, cones, whistles. A row of identical academy training bags. Nothing gleams here — the medal is not on the rack." }] }
+          ]
+        },
+        {
+          "id": "locker", "name": "STAFF LOCKER", "glyph": "locker",
+          "inspects": [
+            { "lines": [{ "t": "Locked, and the padlock is Gus's — old, heavy, faithful. You cross it off." }] }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    { "id": "p_talk_gus", "type": "dialogue", "npc": "gus", "next": "p_hub" },
+    { "id": "p_talk_priya", "type": "dialogue", "npc": "priya", "next": "p_hub" },
+    { "id": "p_talk_daniel", "type": "dialogue", "npc": "daniel", "next": "p_hub" },
+    {
+      "id": "p_confront", "type": "present",
+      "prompt": "Present the evidence that destroys Daniel's story.",
+      "sp": "daniel",
+      "statement": "In the gym. All evening. Until nine. Ask anyone — ask the roster, I don't care.",
+      "correct": "e_sheet",
+      "wrong": [
+        { "sp": "hayes", "t": "That proves nothing against his claim. Look at what he said — and what you can disprove." }
+      ],
+      "break": [
+        { "fx": "flash", "t": "You lay the roster on the table. Daniel's eyes drop to the line: FOX — 18:50." },
+        { "sp": "daniel", "t": "...Okay. I left early. 18:50. I went to the dorms, changed, came back at nine. That's not a crime." },
+        { "sp": "hayes", "t": " stories change once — maybe. Now show him the floor, Investigator." }
+      ],
+      "effects": ["cflag:c0_dan_broke1"],
+      "next": "p_confront2"
+    },
+    {
+      "id": "p_confront2", "type": "present",
+      "prompt": "Daniel claims he was never near the lounge. Break it.",
+      "sp": "daniel",
+      "statement": "I went to the dorms and came back at nine. I never went near the lounge. Not once this evening.",
+      "correct": "e_print",
+      "wrong": [
+        { "sp": "hayes", "t": "He walked the dorms. Fine. What ties him to THIS room?" }
+      ],
+      "break": [
+        { "fx": "flash", "t": "You slide the photograph across: flower-bed soil, cleat tread, size 44." },
+        { "sp": "daniel", "t": "...That's— you can't prove I touched that case. Nobody can prove it." },
+        { "sp": "hayes", "t": "When the story changes twice, Investigator, the story was never true. Now make the call." }
+      ],
+      "effects": ["cflag:c0_dan_broken"],
+      "next": "p_decide"
+    },
+    {
+      "id": "p_decide", "type": "decision",
+      "tag": "FINAL DECISION",
+      "prompt": "Hayes waits, pen ready over the exam record. Who took the honor medal?",
+      "options": [
+        {
+          "label": "Daniel Fox",
+          "desc": "The roster breaks his alibi. The print puts his boots in the room. The warning letter gives him a reason to panic.",
+          "effects": ["choice:c0_accuse|Accused Daniel Fox — correctly", "rel:hayes.respect+3", "rel:daniel.fear+2"],
+          "goto": "p_end_good"
+        },
+        {
+          "label": "Gus Bloom",
+          "desc": "He had keys. He was alone. He had access — but the evidence says nothing of the sort.",
+          "effects": ["choice:c0_accuse|Accused Gus Bloom — wrongly", "rel:hayes.respect-3", "flag:c0_failed"],
+          "goto": "p_end_bad"
+        },
+        {
+          "label": "Report insufficient evidence",
+          "desc": "Refuse to name anyone yet. Careful — but Hayes did say to solve it.",
+          "effects": ["choice:c0_accuse|Refused to accuse"],
+          "goto": "p_end_hold"
+        }
+      ]
+    },
+    {
+      "id": "p_end_hold", "type": "narrative",
+      "lines": [
+        { "sp": "hayes", "t": "Careful is good. Blind is not." },
+        { "sp": "hayes", "t": "You hold a roster that says he lied, and a boot print that says he stood there. That is a story with a hole in it. Push on the hole." }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_end_good", "type": "epilogue",
+      "outcome": "pass_a",
+      "nextCase": 1,
+      "completeEffects": [
+        "unflag:c0_failed",
+        "unlock:1",
+        "rel:hayes.trust+3",
+        "remember-hayes|Graduated top of exam cycle; solved the medal case in the right order",
+        "objdone:tut"
+      ],
+      "lines": [
+        { "sp": "daniel", "t": "...I put it back in my bag before I even knew why I'd done it. The letter said one more strike. One more, and I'm out." },
+        { "sp": "hayes", "t": "The medal is recovered. Daniel Fox is suspended, not expelled. He'll hate you for a year and thank you in ten." },
+        { "sp": "hayes", "t": "Evidence first, accusation second. You did it in the right order. That's rarer than you think." },
+        { "sys": "ACADEMY RECORDS — TRAINING CASE FILE", "t": "The exam sheet is stamped, filed, and tagged with an old internal number." },
+        { "fx": "flash", "sp": "hayes", "t": "One more thing. Your file came through tagged to a training number we retired years ago. 404-C." },
+        { "sp": "james", "t": "...404?" },
+        { "sp": "hayes", "t": "Numbers get reused. Forget it." },
+        { "t": "He says it too fast. He files it too carefully." },
+        { "sys": "TUTORIAL", "t": "TUTORIAL COMPLETE." }
+      ]
+    },
+    {
+      "id": "p_end_bad", "type": "epilogue",
+      "outcome": "failed",
+      "nextCase": 1,
+      "completeEffects": [
+        "unlock:1",
+        "flag:c0_failed",
+        "rel:hayes.trust-1",
+        "rel:gus.fear+3",
+        "remember-gus|Was wrongly accused of theft during the final exam",
+        "objdone:tut"
+      ],
+      "lines": [
+        { "sp": "hayes", "t": "Gus Bloom. Forty years of service, a key chain accounted for to the minute, and boots two sizes too small." },
+        { "sp": "hayes", "t": "The medal turned up an hour ago. In a training bag. Daniel Fox's." },
+        { "sp": "hayes", "t": "You had the roster and the print, Investigator. You had the story with the hole in it, and you pressed the wrong spot." },
+        { "sp": "hayes", "t": "The academy will still graduate you. You'll carry this one instead. Gus will carry it too — that's the part that matters." },
+        { "sys": "ACADEMY RECORDS — TRAINING CASE FILE", "t": "The exam sheet is stamped, filed, and tagged with an old internal number: 404-C." },
+        { "sp": "hayes", "t": "You'll meet worse mistakes than this one. Some of them wear better suits than Fox ever will." }
+      ]
+    }
+  ]
+}
