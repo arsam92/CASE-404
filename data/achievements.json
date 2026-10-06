@@ -1,0 +1,124 @@
+{
+  "achievements": [
+    {
+      "id": "first_case",
+      "title": "OPEN THE FILE",
+      "desc": "Complete your first investigation.",
+      "icon": "📁",
+      "req": "done:0",
+      "secret": false
+    },
+    {
+      "id": "first_contradiction",
+      "title": "HOLD IT",
+      "desc": "Break a statement with the right evidence.",
+      "icon": "⚡",
+      "req": "flag:ach_first_contradiction",
+      "secret": false
+    },
+    {
+      "id": "clean_record",
+      "title": "CLEAN RECORD",
+      "desc": "Close a case with zero missteps (penalty 0).",
+      "icon": "✓",
+      "req": "flag:ach_clean_record",
+      "secret": false
+    },
+    {
+      "id": "ally_sarah",
+      "title": "THE LIVING LIE",
+      "desc": "Earn Sarah Miller's trust (trust ≥ 20).",
+      "icon": "💚",
+      "req": "rel:sarah.trust>=20",
+      "secret": false
+    },
+    {
+      "id": "phone_8821",
+      "title": "NUMBER ON THE RECORD",
+      "desc": "Recover burner phone #8821.",
+      "icon": "📱",
+      "req": "ev:e201",
+      "secret": false
+    },
+    {
+      "id": "northbridge_shadow",
+      "title": "NORTHBRIDGE SHADOW",
+      "desc": "Link a case to Northbridge Logistics.",
+      "icon": "🏗",
+      "req": "flag:ach_northbridge",
+      "secret": false
+    },
+    {
+      "id": "threat_aware",
+      "title": "THEY NOTICE",
+      "desc": "Reach threat level 1 or higher.",
+      "icon": "👁",
+      "req": "threat>=1",
+      "secret": false
+    },
+    {
+      "id": "board_mapper",
+      "title": "THE BOARD",
+      "desc": "Map 8 or more connections on the investigation board.",
+      "icon": "🗺",
+      "req": "flag:ach_board8",
+      "secret": false
+    },
+    {
+      "id": "mercy",
+      "title": "MERCY",
+      "desc": "Choose a merciful path when the record allowed hardness.",
+      "icon": "🕊",
+      "req": "flag:ach_mercy",
+      "secret": true
+    },
+    {
+      "id": "hardline",
+      "title": "HARDLINE",
+      "desc": "Push for the harshest available outcome.",
+      "icon": "⚖",
+      "req": "flag:ach_hardline",
+      "secret": true
+    },
+    {
+      "id": "courier_closed",
+      "title": "SILENT NO MORE",
+      "desc": "Close CASE 002 — The Silent Courier.",
+      "icon": "📦",
+      "req": "done:2",
+      "secret": false
+    },
+    {
+      "id": "missing_file",
+      "title": "THE MISSING FILE",
+      "desc": "Close CASE 001 — The Missing File.",
+      "icon": "🗂",
+      "req": "done:1",
+      "secret": false
+    },
+    {
+      "id": "lesson_learned",
+      "title": "THE LESSON",
+      "desc": "Complete the training case.",
+      "icon": "🎓",
+      "req": "done:0",
+      "secret": false
+    },
+    {
+      "id": "archive_glitch",
+      "title": "SYNC ERROR",
+      "desc": "Witness ARCHIVE SYNC ERROR 404 in the field.",
+      "icon": "404",
+      "req": "flag:ach_saw_404",
+      "secret": true
+    },
+    {
+      "id": "full_cast",
+      "title": "THE RECORD KEEPS NAMES",
+      "desc": "Meet 10 different people across cases.",
+      "icon": "👥",
+      "req": "flag:ach_met10",
+      "secret": false
+    }
+  ]
+}

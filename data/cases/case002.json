@@ -2,34 +2,408 @@
   "caseId": 2,
   "code": "CASE 002",
   "title": "The Silent Courier",
-  "status": "development",
   "ambient": "investigate",
-  "brief": "A courier is found unconscious, his delivery missing: a burner phone. Its call log holds a number that will follow you for twenty cases. Phone #8821 enters the record.",
-  "objectives": [],
-  "startPhase": null,
-  "hook": {
-    "plants": [
-      "burner phone #8821",
-      "Northbridge dispatch",
-      "Leo Vance (minor fixer)"
-    ],
-    "connections": [
-      "008",
-      "009"
-    ],
-    "crimes": []
+  "brief": "October 11, 22:40. Courier Danny Ortiz is found unconscious behind the East Docks warehouse. His satchel is open. One package is missing: a sealed envelope containing a burner phone. Dispatch logged the drop as Northbridge Logistics, bay 4. The phone's call log — if you recover it — holds a number that does not yet mean anything. It will.",
+  "objectives": [
+    "Recover the missing delivery",
+    "Identify who ordered the drop",
+    "Decide what the number is worth"
+  ],
+  "startPhase": "p_intro",
+  "entryEffects": [
+    "board:case:c2|CASE 002",
+    "board:person:danny|DANNY ORTIZ",
+    "board:person:ruth|RUTH KLINE",
+    "board:person:leo|LEO VANCE",
+    "board:org:northbridge|NORTHBRIDGE LOGISTICS",
+    "board:link:c2|danny|VICTIM",
+    "board:link:c2|northbridge|DISPATCH",
+    "music:investigate",
+    "obj:o1|Find the missing package",
+    "obj:o2|Interview dispatch",
+    "obj:o3|Trace the order"
+  ],
+  "evidence": [
+    {
+      "id": "e201",
+      "label": "EV-201",
+      "name": "Burner Phone #8821",
+      "importance": "key",
+      "source": "Found in storm drain, East Docks alley",
+      "time": "Recovered ~23:10, Oct 11",
+      "location": "East Docks",
+      "related": "Danny Ortiz, unknown recipient",
+      "desc": "A cheap flip phone with no SIM tray label. Call log shows one number dialed three times in the last week: a blocked line that rings twice and hangs up. The case is scratched with a single mark: 8821. Inside the battery compartment, a strip of tape holds a folded scrap — coordinates for bay 4, Northbridge.",
+      "interp": [
+        "This is the missing delivery.",
+        "Someone wanted this phone in a specific hand — and someone else did not.",
+        "The number will return. Remember 8821."
+      ]
+    },
+    {
+      "id": "e202",
+      "label": "EV-202",
+      "name": "Courier Dispatch Log",
+      "importance": "key",
+      "source": "Ruth Kline / Night Dispatch",
+      "time": "22:00–22:30, Oct 11",
+      "location": "Courier hub, East Docks",
+      "related": "Danny Ortiz, Northbridge Logistics",
+      "desc": "Danny signed out at 22:04 for a single drop: 'NB-B4 / sealed / no signature required'. The client field is blank. Ruth says Northbridge never leaves the client blank. Someone filled the job by phone — a voice she does not recognize.",
+      "interp": [
+        "The job was planted into the queue.",
+        "Northbridge's name is on the route, but not on the order."
+      ]
+    },
+    {
+      "id": "e203",
+      "label": "EV-203",
+      "name": "Dock Camera Still",
+      "importance": "important",
+      "source": "Warehouse security, bay 4",
+      "time": "22:18, Oct 11",
+      "location": "Northbridge bay 4",
+      "related": "Unknown figure",
+      "desc": "A grainy frame: a figure in a dark jacket takes a small package from a courier's hand and walks out of frame toward the alley. The courier staggers two steps and falls. The figure never looks at the camera.",
+      "interp": [
+        "Danny was struck after the handoff — or during it.",
+        "The receiver wanted the phone more than the courier's silence."
+      ]
+    },
+    {
+      "id": "e204",
+      "label": "EV-204",
+      "name": "Leo Vance Receipt Stub",
+      "importance": "important",
+      "source": "Leo's jacket pocket (searched with consent)",
+      "time": "Earlier that evening",
+      "location": "East Docks café",
+      "related": "Leo Vance",
+      "desc": "A torn receipt for two coffees and a 'hold package — L.V.' note in the same hand. Leo claims he was only waiting for a friend. The friend has no name.",
+      "interp": [
+        "Leo expected a package tonight.",
+        "He may not have been the one who hit Danny — but he was in the orbit."
+      ]
+    },
+    {
+      "id": "e205",
+      "label": "EV-205",
+      "name": "Danny's Statement (partial)",
+      "importance": "optional",
+      "source": "Hospital bed, brief window of clarity",
+      "time": "00:12, Oct 12",
+      "location": "County General",
+      "related": "Danny Ortiz",
+      "desc": "'Guy said Northbridge. Paid cash to the desk. Phone was already on. He said don't look at the screen.' Danny loses consciousness again before he can describe the face.",
+      "interp": [
+        "The phone was active before the drop.",
+        "Whoever ordered it did not want Danny reading the log."
+      ]
+    }
+  ],
+  "dialogues": {
+    "ruth": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "ruth",
+          "t": "I dispatch forty couriers a night. You think I track every sealed envelope?",
+          "opts": [
+            { "t": "Where was Danny at 22:00?", "goto": "n_where" },
+            { "t": "Who booked the Northbridge drop?", "goto": "n_book" },
+            { "t": "Show me the dispatch log.", "goto": "n_log", "effects": ["ev:e202", "objdone:o2"] },
+            { "t": "Phone #8821. Ring a bell?", "req": "ev:e201", "goto": "n_8821" },
+            { "t": "That's all for now.", "goto": "__end" }
+          ]
+        },
+        "n_where": {
+          "sp": "ruth",
+          "t": "On his route. Bay 4, Northbridge. He left at 22:04. He does not freestyle.",
+          "next": "start"
+        },
+        "n_book": {
+          "sp": "ruth",
+          "t": "Came in by phone. Male. Calm. Said 'Northbridge bay 4, sealed, no signature.' Paid the desk fee in cash through a runner I never saw. Client field stayed blank. That never happens with real Northbridge jobs.",
+          "effects": ["flag:c2_fake_order", "board:link:northbridge|c2|NAME USED"],
+          "next": "start"
+        },
+        "n_log": {
+          "sp": "ruth",
+          "t": "Here. Look at the blank client field. I told the night supervisor. He shrugged. People shrug a lot around Northbridge.",
+          "next": "start"
+        },
+        "n_8821": {
+          "sp": "ruth",
+          "t": "I don't number phones. I number runs. If that thing was in Danny's bag, someone put it there on purpose.",
+          "next": "start"
+        }
+      }
+    },
+    "leo": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "leo",
+          "t": "I fix small problems for people who don't want paperwork. Tonight I was drinking coffee. That's the whole story.",
+          "opts": [
+            { "t": "You were at the docks when Danny went down.", "goto": "n_docks" },
+            { "t": "What's 'hold package — L.V.'?", "req": "ev:e204", "goto": "n_receipt" },
+            { "t": "Confront him with the camera still.", "present": true, "correct": "e203",
+              "break": [
+                { "sp": "leo", "t": "...Fine. I was supposed to pick up a phone. Not hit anybody. The guy in the jacket got there first." }
+              ],
+              "wrong": [
+                { "sp": "leo", "t": "That picture is a shadow. You can't put a shadow in a cell." }
+              ],
+              "effects": ["rel:leo.fear+2", "flag:c2_leo_broke", "rel:leo.trust-1"],
+              "goto": "n_broke"
+            },
+            { "t": "Northbridge. What do you know?", "goto": "n_nb" },
+            { "t": "We're done.", "goto": "__end" }
+          ]
+        },
+        "n_docks": {
+          "sp": "leo",
+          "t": "A lot of people were at the docks. I like the café. The coffee is terrible. That is also not a crime.",
+          "next": "start"
+        },
+        "n_receipt": {
+          "sp": "leo",
+          "t": "A friend asked me to hold something. The friend did not show. I kept the receipt because I keep everything. Habit.",
+          "effects": ["rel:leo.suspicion+1"],
+          "next": "start"
+        },
+        "n_nb": {
+          "sp": "leo",
+          "t": "Northbridge pays well and asks fewer questions than the county. I don't work for them. I work near them. There is a difference you learn not to erase.",
+          "effects": ["flag:ach_northbridge", "board:link:leo|northbridge|ORBIT"],
+          "next": "start"
+        },
+        "n_broke": {
+          "sp": "leo",
+          "t": "The jacket guy took the phone and kept walking. I left. Danny was already on the ground. I don't do hospitals.",
+          "opts": [
+            { "t": "Who hired you to hold the phone?", "goto": "n_hire" },
+            { "t": "Describe the jacket.", "goto": "n_jacket" },
+            { "t": "You're a witness now. Stay reachable.", "effects": ["rel:leo.loyalty+1", "remember:leo|agreed to stay reachable"], "goto": "__end" }
+          ]
+        },
+        "n_hire": {
+          "sp": "leo",
+          "t": "A voice. No name. Cash left at the café under a saucer. Same voice that books blank-client runs, if you ask Ruth. I never saw a face.",
+          "effects": ["flag:c2_voice", "rel:leo.trust+1"],
+          "next": "n_broke"
+        },
+        "n_jacket": {
+          "sp": "leo",
+          "t": "Dark. Expensive enough to not be dock work. Walked like someone who does not run. That is all I give you for free.",
+          "next": "n_broke"
+        }
+      }
+    },
+    "danny": {
+      "start": "start",
+      "nodes": {
+        "start": {
+          "sp": "danny",
+          "t": "...Hurts to talk. Guy said Northbridge. Paid cash. Phone was already on. Said don't look at the screen.",
+          "opts": [
+            { "t": "Did you see his face?", "goto": "n_face" },
+            { "t": "Anything else on the phone?", "goto": "n_phone" },
+            { "t": "Rest. We'll handle it.", "effects": ["rel:danny.trust+2", "ev:e205", "flag:ach_mercy", "remember:danny|investigator was kind"], "goto": "__end" }
+          ]
+        },
+        "n_face": {
+          "sp": "danny",
+          "t": "Hood. Shadow. I was looking at the bag. Stupid.",
+          "next": "start"
+        },
+        "n_phone": {
+          "sp": "danny",
+          "t": "It rang once while I was walking. I didn't answer. Orders.",
+          "next": "start"
+        }
+      }
+    }
   },
-  "threatEvents": [],
-  "phases": [],
-  "evidence": [],
-  "dialogues": {},
-  "template": {
-    "schema": "case-404/1",
-    "howToExpand": [
-      "Set startPhase to the first phase id.",
-      "Add phases: narrative | hub | location | dialogue | present | decision | courtroom | action | phone | epilogue.",
-      "Add evidence defs and dialogues. Effects/conditions DSL is documented in docs/ADDING_CASES.md.",
-      "End with an epilogue phase carrying outcomeReq (or outcome) and nextCase."
-    ]
-  }
+  "phases": [
+    {
+      "id": "p_intro",
+      "type": "narrative",
+      "lines": [
+        { "sys": "MERIDIAN COUNTY — EAST DOCKS", "t": "Rain on concrete. A courier bag open like a mouth. Danny Ortiz is already in an ambulance by the time you arrive." },
+        { "sp": "emma", "t": "Ortiz is alive. Barely. Package missing — one sealed envelope, logged as a Northbridge drop. Hale wants this quiet. I want it accurate." },
+        { "sp": "james", "t": "Quiet and accurate rarely travel together." },
+        { "sp": "emma", "t": "Then pick accurate. Dispatch is Ruth Kline. There's a fixer named Leo Vance who hangs around the café. And the alley has a storm drain that eats evidence." }
+      ],
+      "next": "p_hub"
+    },
+    {
+      "id": "p_hub",
+      "type": "hub",
+      "title": "EAST DOCKS",
+      "desc": "Where to dig.",
+      "options": [
+        { "label": "Courier Dispatch", "sub": "Ruth Kline — night desk", "glyph": "☎", "goto": "p_ruth" },
+        { "label": "East Docks Alley", "sub": "Scene of the fall", "glyph": "🔍", "goto": "p_alley" },
+        { "label": "Café Hold", "sub": "Leo Vance — if he is still there", "glyph": "☕", "goto": "p_leo" },
+        { "label": "County General", "sub": "Danny Ortiz — brief window", "glyph": "🏥", "goto": "p_hospital", "req": "ev:e201" },
+        { "label": "Northbridge Bay 4", "sub": "Security stills", "glyph": "📷", "goto": "p_bay" }
+      ],
+      "proceedReq": "ev:e201&ev:e202",
+      "proceedLabel": "Call it in — enough to move",
+      "proceedGoto": "p_decision",
+      "proceedHint": "Recover the phone and the dispatch log before you close the loop."
+    },
+    {
+      "id": "p_ruth",
+      "type": "dialogue",
+      "npc": "ruth",
+      "next": "p_hub"
+    },
+    {
+      "id": "p_leo",
+      "type": "dialogue",
+      "npc": "leo",
+      "enterEffects": ["ev:e204"],
+      "next": "p_hub"
+    },
+    {
+      "id": "p_hospital",
+      "type": "dialogue",
+      "npc": "danny",
+      "next": "p_hub"
+    },
+    {
+      "id": "p_alley",
+      "type": "location",
+      "loc": "East Docks Alley",
+      "title": "THE ALLEY",
+      "hotspots": [
+        {
+          "id": "drain",
+          "name": "Storm Drain",
+          "glyph": "⬇",
+          "inspects": [
+            {
+              "lines": [
+                { "t": "Water, oil, a plastic edge. You reach past the grate." },
+                { "t": "A flip phone. Scratched case. The number 8821 cut into the plastic." }
+              ],
+              "effects": ["ev:e201", "objdone:o1", "board:thing:phone8821|PHONE #8821", "board:link:c2|phone8821|RECOVERED", "sfx:reveal"]
+            }
+          ]
+        },
+        {
+          "id": "wall",
+          "name": "Brick Wall",
+          "glyph": "🧱",
+          "inspects": [
+            {
+              "lines": [
+                { "t": "Scuff marks at shoulder height. Someone was pushed or fell hard." }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bag",
+          "name": "Courier Satchel",
+          "glyph": "📦",
+          "inspects": [
+            {
+              "lines": [
+                { "t": "Empty compartment where a sealed envelope should sit. No blood on the strap. The violence was efficient." }
+              ]
+            }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_bay",
+      "type": "location",
+      "loc": "Northbridge Bay 4",
+      "title": "BAY 4",
+      "hotspots": [
+        {
+          "id": "cam",
+          "name": "Security Monitor",
+          "glyph": "📹",
+          "inspects": [
+            {
+              "lines": [
+                { "t": "The still at 22:18: handoff, then collapse. The receiver never shows a face." }
+              ],
+              "effects": ["ev:e203", "flag:ach_northbridge"]
+            }
+          ]
+        },
+        {
+          "id": "baydoor",
+          "name": "Bay Door Log",
+          "glyph": "🚪",
+          "inspects": [
+            {
+              "lines": [
+                { "t": "Northbridge's own log shows no official inbound at 22:00. The name was borrowed." }
+              ],
+              "effects": ["flag:c2_nb_false"]
+            }
+          ]
+        }
+      ],
+      "back": "p_hub"
+    },
+    {
+      "id": "p_decision",
+      "type": "decision",
+      "tag": "THE NUMBER",
+      "prompt": "You have phone #8821. The call log points to a blocked line that will matter later. What do you do with the number now?",
+      "options": [
+        {
+          "label": "Log it officially — full chain of custody",
+          "desc": "Emma gets the log. The record is clean. Someone watching the record will see you looking.",
+          "effects": ["flag:c2_logged_8821", "choice:c2_log|Logged #8821 into the official record", "rel:emma.trust+2", "threat:1"],
+          "goto": "p_epilogue"
+        },
+        {
+          "label": "Keep a private copy — official log stays thin",
+          "desc": "You photograph the log and file a thinner report. Harder to trace. Harder to prove later.",
+          "effects": ["flag:c2_private_8821", "choice:c2_private|Kept #8821 off the full record", "note:Private copy of #8821 call log — Oct 11"],
+          "goto": "p_epilogue"
+        },
+        {
+          "label": "Press Leo for the voice — hard",
+          "desc": "Drag Leo in as a material witness. He talks or he sits.",
+          "req": "flag:c2_leo_broke",
+          "effects": ["flag:c2_leo_pressed", "choice:c2_press|Pressed Leo Vance hard", "rel:leo.fear+3", "rel:leo.trust-2", "flag:ach_hardline"],
+          "goto": "p_epilogue"
+        }
+      ]
+    },
+    {
+      "id": "p_epilogue",
+      "type": "epilogue",
+      "lines": [
+        { "sys": "CASE 002 — CLOSED", "t": "Danny Ortiz survives. The phone is in evidence — or in your pocket's shadow. Northbridge's name was used as a mask." },
+        { "sp": "emma", "t": "I'll write the drop as theft and assault. The blank client field stays in the file. Hale will hate that sentence." },
+        { "sp": "james", "t": "Let him. Numbers have a way of coming back." },
+        { "sys": "NOTE", "t": "Burner #8821 is now part of the record you keep. It will surface again." }
+      ],
+      "outcomeReq": [
+        { "req": "flag:c2_logged_8821", "outcome": "strong" },
+        { "req": "flag:c2_private_8821", "outcome": "pass" },
+        { "req": "flag:c2_leo_pressed", "outcome": "pass_a" }
+      ],
+      "outcome": "pass",
+      "nextCase": 3,
+      "completeEffects": [
+        "unlock:3",
+        "board:link:phone8821|c2|ON RECORD",
+        "msg:UNKNOWN|You opened something that was sealed for a reason. — 404"
+      ]
+    }
+  ]
 }
