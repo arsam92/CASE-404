@@ -26,6 +26,35 @@ Something called **404** has been deleting this county's truth for twenty years.
 
 **All characters, cases, dialogue, locations and systems are original.** The game takes broad inspiration from the courtroom-drama and detective genres, but every story element is its own.
 
+## v0.2.0 — 19-Language Localization
+
+CASE-404 now includes a built-in localization layer with language selection in Settings and RTL support.
+
+Supported languages:
+- English
+- فارسی (Persian)
+- العربية (Arabic)
+- 日本語 (Japanese)
+- Deutsch
+- Français
+- Español
+- Italiano
+- Português (Brasil)
+- 한국어
+- 简体中文
+- Русский
+- Türkçe
+- Polski
+- Nederlands
+- Bahasa Indonesia
+- हिन्दी
+- Українська
+- Tiếng Việt
+
+Language packs live in `i18n/locales.json`, while the runtime is handled by `src/engine/i18n.js`. The selected language is persisted with game settings.
+
+> Note: v0.2.0 establishes the multilingual UI/localization architecture. Story/dialogue content is progressively migrated to locale keys as each case is translated and reviewed.
+
 ## Features
 
 - **CASE 000 — The Lesson**: a full interactive tutorial that teaches investigation by playing, not reading.
