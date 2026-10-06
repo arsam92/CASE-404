@@ -36,7 +36,8 @@ export function freshProfile() {
     flags: {},                  // global story flags
     threat: { level: 0, events: [] },
     phone: { messages: [], calls: [], notes: [], photos: [] },
-    board: { nodes: [], links: [] }
+    board: { nodes: [], links: [] },
+    achievements: { unlocked: {}, seen: [] }
   };
 }
 
@@ -60,7 +61,8 @@ export function remember(id, fact) {
 
 /* ---------- condition engine ----------
    req examples: "ev:e103"  "!flag:bishop_pressed"  "rel:tomas.trust>=2"
-                 "done:1"  "outcome:1:justice"  "threat>=3"  "ev:a&flag:b"      */
+                 "done:1"  "outcome:1:justice"  "threat>=3"  "ev:a&flag:b"
+                 "achieve:first_case"      */
 
 export function reqOk(req) {
   if (!req) return true;
@@ -82,6 +84,7 @@ export function reqOk(req) {
       return G.s.progress.completed[+c] === o;
     }
     if (p.startsWith('threat>=')) return G.s.threat.level >= +p.slice(8);
+    if (p.startsWith('achieve:')) return !!(G.s.achievements?.unlocked?.[p.slice(8)]);
     return true;
   });
 }
@@ -114,6 +117,7 @@ export function addEv(id, caseId) {
    "sfx:name" / "music:mode"
    "penalty:+1" / "verdict:strong|weak"
    "endcase:OUTCOME"            complete current case
+   "achieve:ID"                 unlock achievement
 */
 
 export function applyEffects(effects = [], ctx = {}) {
@@ -172,6 +176,15 @@ export function applyEffects(effects = [], ctx = {}) {
       case 'verdict': if (G.s.caseState) G.s.caseState.verdict = tail; break;
       case 'endcase': events.push({ k: 'endcase', outcome: tail }); break;
       case 'remember': { const [id, fact] = splitPipe(tail); remember(id, fact); break; }
+      case 'achieve': {
+        G.s.achievements ??= { unlocked: {}, seen: [] };
+        G.s.achievements.unlocked ??= {};
+        if (!G.s.achievements.unlocked[tail]) {
+          G.s.achievements.unlocked[tail] = Date.now();
+          events.push({ k: 'achieve', id: tail });
+        }
+        break;
+      }
       default: console.warn('[fx] unknown effect', raw);
     }
   }
