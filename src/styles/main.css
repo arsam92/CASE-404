@@ -666,3 +666,41 @@ h4 { font-family: var(--mono); letter-spacing: .14em; font-size: 12px; color: va
   .menu-btns { margin-top: 24px; }
   .court-panel { min-height: 190px; }
 }
+
+/* ---------- Localization / RTL ---------- */
+html[dir="rtl"] {
+  direction: rtl;
+}
+html[dir="rtl"] .screen,
+html[dir="rtl"] .panel,
+html[dir="rtl"] .overlay-panel {
+  direction: rtl;
+}
+html[dir="rtl"] .narr-text,
+html[dir="rtl"] .brief-file,
+html[dir="rtl"] .cc-brief,
+html[dir="rtl"] .arch-memory,
+html[dir="rtl"] .dossier-body {
+  text-align: right;
+}
+html[dir="rtl"] .menu-btn span,
+html[dir="rtl"] .menu-btn b {
+  text-align: right;
+}
+html[dir="rtl"] .dlg-opts,
+html[dir="rtl"] .dlg-opt {
+  text-align: right;
+}
+html[dir="rtl"] .phone-screen,
+html[dir="rtl"] .phone-message,
+html[dir="rtl"] .phone-note {
+  direction: rtl;
+  text-align: right;
+}
+#setLanguage {
+  min-width: 170px;
+  background: var(--panel, #0d1320);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,.18);
+  padding: .55rem .7rem;
+}
